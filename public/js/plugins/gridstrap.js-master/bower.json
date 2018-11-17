@@ -1,0 +1,31 @@
+{
+  "name": "jquery.gridstrap",
+  "license": "MIT",
+  "authors": [
+    "Ross P <info@rossp.email>"
+  ],
+  "description": "gridstrap.js",
+  "homepage": "https://rosspi.github.io/gridstrap.js/",
+  "keywords": [
+    "gridster",
+    "gridstrap",
+    "bootstrap",
+    "gridstack",
+    "jquery-plugin",
+    "jquery",
+    "jquery plugin",
+    "plugins",
+    "drag",
+    "drop",
+    "draggable"
+  ],
+  "main": "dist/jquery.gridstrap.js",
+  "dependencies": {
+    "jquery": ">=3.2.1 < 4.0.0"
+  },
+  "ignore": [
+    "npm-debug.log",
+    "bower_components",
+    "node_modules"
+  ]
+}

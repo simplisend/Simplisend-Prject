@@ -1,0 +1,110 @@
+@media print {
+    #app {
+        width: 1350px !important;
+    }
+    .container {
+        width: 1200px !important;
+    }
+    .col-lg-12 {
+        width: 100% !important;
+    }
+    .col-lg-11 {
+        width: 91.66666667% !important;
+    }
+    .col-lg-10 {
+        width: 83.33333333% !important;
+    }
+    .col-lg-9 {
+        width: 75% !important;
+    }
+    .col-lg-8 {
+        width: 66.66666667% !important;
+    }
+    .col-lg-7 {
+        width: 58.33333333% !important;
+    }
+    .col-lg-6 {
+        width: 50% !important;
+    }
+    .col-lg-5 {
+        width: 41.66666667% !important;
+    }
+    .col-lg-4 {
+        width: 33.33333333% !important;
+    }
+    .col-lg-3 {
+        width: 25% !important;
+    }
+    .col-lg-2 {
+        width: 18.666667% !important;
+    }
+    .col-lg-1 {
+        width: 8.33333333% !important;
+    }
+}
+
+
+
+.a4-page {
+    height: 1243px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 15px rgb(193, 193, 190);
+    z-index: 9999;
+    background-color: rgb(255, 255, 255);
+    padding: 30px 15px 30px 15px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#close-btn{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+#close-btn a{
+    background-color: rgb(67, 102, 130);
+    color: white;
+    padding: 7px 12px;
+    border-radius: 4px;
+}
+
+
+textarea {
+    resize: none;
+    overflow: hidden;
+    /*height: auto !important;*/
+}
+
+.v-print.element-header,.v-popup.element-header{
+    position: absolute !important;
+    width: 100% !important;
+    top: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    padding-left: inherit !important;
+    padding-right: inherit !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+.v-print.element-footer,.v-popup.element-footer{
+    position: absolute !important;
+    width: 100% !important;
+    bottom: 0 !important;
+    top: auto !important;
+    margin: 0 !important;
+    outline: none !important;
+    padding-left: inherit !important;
+    padding-right: inherit !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+fieldset {
+    z-index: 9999;
+}
+.v-print.element-unprintable{
+    display: none !important;
+}

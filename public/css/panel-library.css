@@ -1,0 +1,85 @@
+/*Library*/
+#library{
+    z-index: 1040;
+    height: 650px;
+    overflow: hidden;
+    border-bottom: 2px solid rgb(96, 126, 152);
+    border-top-left-radius: 11px;
+    background: rgb(96, 126, 152);
+}
+#library #library_content{
+    height: 614px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+}
+#library .categories_list,#library .category_items {
+    height: auto;
+    width: 100%;
+}
+#library .category_items {
+    cursor: pointer;
+}
+#library .item-title > .item-tools {
+    width: 24px;
+    margin-top: -7px;
+    height: 32px;
+}
+#library .item-title > .item-tools span {
+    font-size: 28px;
+    color: #436682;
+}
+#library .item-title {
+    background: #cfdae6;
+    padding: 0 5px;
+    border-radius: 8px;
+    margin-left: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: table;
+    width: 93%;
+    cursor: pointer;
+}
+#library .item-title:hover > .item-tools span {
+    font-size: 28px;
+    color: #e8edf1;
+}
+#library .category_items{
+    padding: 6px 7px;
+}
+#library .category_item{
+    padding: 4px 0;
+}
+#library .close{
+    text-align: left;
+    color: #ffffff;
+    text-shadow: none;
+    opacity: 1;
+}
+#library .category_item img{
+    width: 100%;
+}
+#library .category_item h4{
+    text-align: center;
+    padding: 0;
+    margin: 7px 0;
+    color: #e8edf1;
+}
+#library .category_item .delete i{
+    color: inherit;
+    font-size: inherit;
+}
+#library .category_item .delete {
+    position: absolute;
+    float: right;
+    right: 11px;
+    font-size: 24px;
+    margin-top: -4px;
+    color: #436682;
+    text-align: center;
+    border-radius: 23px;
+}
+#library .category_item .delete:hover {
+    color: #e8edf1;
+}
+

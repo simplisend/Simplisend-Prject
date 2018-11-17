@@ -1,0 +1,182 @@
+.navbar-left {
+    float: left!important;
+    width: 15%;
+}
+.nav_menu {
+    position: relative !important;
+}
+body{
+    overflow: auto;
+}
+#app {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+#left-panel {
+    left: 0;
+}
+
+#form-side {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+div#right-panel {
+    position: absolute;
+    right: 0;
+}
+.replacable-panel {
+    right: -59%;
+    z-index: 77;
+    position: absolute;
+    top: 53px;
+    width: 140px;
+    margin: auto;
+}
+.replacable-panel {
+    list-style: none;
+    padding: 0 39px 0 7px;
+}
+#form-builder{
+    display: table;
+    position: static;
+    height: 750px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 30px;
+}
+.container.body {
+    width: 100%;
+
+}
+
+#form-builder.container {
+    width: 1440px !important;
+    margin: auto;
+}
+@media (min-width: 1440px){
+    #app {
+        width: 1440px;
+    }
+
+    .left-bar-btn {
+        margin-left: -40px;
+    }
+
+
+}
+
+@media (max-width: 1440px) and (min-width: 1200px){
+    .left-bar-btn {
+        margin-left: -69px;
+        width: 50px;
+    }
+    .replacable-panel {
+        right: 13%;
+    }
+    body{
+        overflow-x: hidden;
+        margin-bottom: 50px;
+    }
+    .container.body {
+        overflow: visible !important;
+    }
+
+    #app {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 1200px){
+    #app {
+        width: 1440px;
+    }
+    .container.body {
+        overflow: visible !important;
+    }
+    .group-item label, .group-item h5 {
+        margin-top: 0;
+    }
+    .navbar-nav>li {
+        float: left;
+    }
+    .navbar-nav {
+        margin: 0 !important;
+    }
+    .form-builder.col-lg-12 {
+        width: 100%;
+    }
+    .form-builder.col-lg-11 {
+        width: 91.66666667%;
+    }
+    .form-builder.col-lg-10 {
+        width: 83.33333333%;
+    }
+    .form-builder.col-lg-9 {
+        width: 75%;
+    }
+    .page-header .form-builder.col-lg-8 {
+        width: 60.66666667%;
+    }
+    .form-builder.col-lg-8 {
+        width: 66.66666667%;
+    }
+    .form-builder.col-lg-7 {
+        width: 58.33333333%;
+    }
+    .form-builder.col-lg-6 {
+        width: 50%;
+    }
+    .form-builder.col-lg-5 {
+        width: 41.66666667%;
+    }
+    .form-builder.col-lg-4 {
+        width: 33.33333333%;
+    }
+    .form-builder.col-lg-3 {
+        width: 25%;
+    }
+    .form-builder.col-lg-2 {
+        width: 18.666667%;
+    }
+    .form-builder.col-lg-1 {
+        width: 8.33333333%;
+    }
+
+
+    .right-panel {
+        padding: 0 13px 0 0;
+    }
+
+    .replacable-panel {
+        width: 6.2% !important;
+        right: 18%;
+    }
+
+}
+
+
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+
+}
