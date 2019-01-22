@@ -411,17 +411,22 @@ var FromJson = function (obj) {
                                             if (getElement.tagName() === "LABEL") {
                                                 let elementList = $("<li></li>");
 
-                                                var title_element = getElement.tagName();
+                                                var title_element = icons[getElement.parent().attr("rel").replaceAllChars("-", "_")] + " <span>" + getElement.tagName() + "</span>";
                                                 var attr = getElement.hasAttr('title');
                                                 if (attr) {
-                                                    title_element = getElement.attr("title");
+                                                    title_element = icons[getElement.parent().attr("rel").replaceAllChars("-", "_")] + " <span>" + getElement.attr("title") + "</span>";
+                                                }
+
+                                                if(getElement.parents(".checkbox_input").length > 0 || getElement.parents(".radio_input").length > 0){
+                                                    title_element = " <span>" + getElement.html() + "</span>";
+
                                                 }
 
 
                                                 let in_li = $("<div></div>")
                                                     .addClass("subitem clickable-item")
                                                     .attr({"title": getElement.attr("id")})
-                                                    .append(icons[getElement.parent().attr("rel").replaceAllChars("-", "_")] + " <span>" + title_element + "</span>");
+                                                    .append(title_element);
                                                 elementList.append(in_li);
 
                                                 // var listInFieldsetElement = $("<ul></ul>").addClass("items-list list-target");
@@ -879,7 +884,7 @@ var FromJson = function (obj) {
                     },
                     change: function () {
 
-                        saveCache();
+                        // saveCache();
                     }
                 });
             })
@@ -1155,7 +1160,7 @@ var FromJson = function (obj) {
             },
             onChange: function (input, tag) {
 
-                saveCache();
+                // saveCache();
                 // $("select[title='selected-languages-a']").makeDropdown(null);
 
 

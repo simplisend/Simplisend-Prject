@@ -104,7 +104,7 @@ $("#calculate_value button").on("click", function () {
 });
 
 $("#save-calculation-btn").on("click", function () {
-    var allev = $('#display1').text().replaceAllChars("\u0025","/100");
+    var allev = $('#display1').text().replaceAllChars("\u0025","/100").replaceAllChars("&nbsp"," ");
     clicked.find(".prop-target").attr("calculation", allev);
 });
 

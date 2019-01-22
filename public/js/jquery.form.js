@@ -1,19 +1,36 @@
 (function ($) {
     $.fn.resize_page_constrain = function (attr_name, new_width) {
 
+        /*
+                var $sizes = {
+                    "A0": "9933 x 14043",
+                    "A1": "7016 x 9933",
+                    "A2": "4961 x 7016",
+                    "A3": "3508 x 4961",
+                    "A4": "2480 x 3508",
+                    "A5": "1748 x 2480",
+                    "A6": "1240 x 1748",
+                    "A7": "874 x 1240",
+                    "A8": "614 x 874",
+                    "A9": "437 x 614",
+                    "A10": "307 x 437"
+                };
+        */
         var $sizes = {
-            "A0": "9933 x 14043",
-            "A1": "7016 x 9933",
-            "A2": "4961 x 7016",
-            "A3": "3508 x 4961",
-            "A4": "2480 x 3508",
-            "A5": "1748 x 2480",
-            "A6": "1240 x 1748",
-            "A7": "874 x 1240",
-            "A8": "614 x 874",
-            "A9": "437 x 614",
-            "A10": "307 x 437"
+            "A0": "3178 x 4493",
+            "A1": "2245 x 3178",
+            "A2": "1587 x 2245",
+            "A3": "1122 x 1587",
+            "A4": "793 x 1122",
+            "A5": "559 x 793",
+            "A6": "396 x 559",
+            "A7": "279 x 396",
+            "A8": "196 x 279",
+            "A9": "139 x 196",
+            "A10": "98 x 139"
         };
+
+
         var getValue = $(this).attr(attr_name);
         if ($sizes[getValue] !== undefined && $sizes[getValue] !== "") {
             var $arg = $sizes[getValue].split("x"),
@@ -60,33 +77,68 @@
 
 jQuery(document).ready(function () {
     var $sizes = {
-        "A0": "9933 x 14043",
-        "A1": "7016 x 9933",
-        "A2": "4961 x 7016",
-        "A3": "3508 x 4961",
-        "A4": "2480 x 3508",
-        "A5": "1748 x 2480",
-        "A6": "1240 x 1748",
-        "A7": "874 x 1240",
-        "A8": "614 x 874",
-        "A9": "437 x 614",
-        "A10": "307 x 437"
+        "A0": "3178 x 4493",
+        "A1": "2245 x 3178",
+        "A2": "1587 x 2245",
+        "A3": "1122 x 1587",
+        "A4": "793 x 1122",
+        "A5": "559 x 793",
+        "A6": "396 x 559",
+        "A7": "279 x 396",
+        "A8": "196 x 279",
+        "A9": "139 x 196",
+        "A10": "98 x 139"
     };
+    /*
+        var $sizes = {
+            "A0": "9933 x 14043",
+            "A1": "7016 x 9933",
+            "A2": "4961 x 7016",
+            "A3": "1000 x 707",
+            "A4": "1000 x 1414",
+            "A5": "1748 x 2480",
+            "A6": "1240 x 1748",
+            "A7": "874 x 1240",
+            "A8": "614 x 874",
+            "A9": "437 x 614",
+            "A10": "307 x 437"
+        };
+    */
+    var FromJson = function (obj) {
+            return JSON.stringify(obj).split('"').join("'").split("'[{").join("{").split("}]'").join("}");
+        },
+
+        ToJson = function (obj) {
+            if (obj === "[]") {
+                obj = "{}";
+            }
+            var $tojson = obj;
+            $tojson = $tojson.split(":'").join(':"');
+            $tojson = $tojson.split("':").join('":');
+            $tojson = $tojson.split(",'").join(',"');
+            $tojson = $tojson.split("',").join('",');
+            $tojson = $tojson.split("{'").join('{"');
+            $tojson = $tojson.split("'}").join('"}');
 
 
-    var $width = screen.width, $height = screen.height;
-    $(window).resize(function () {
-        return;
-    });
+            try {
+                return JSON.parse($tojson);
+            } catch (e) {
+                return JSON.parse("[]");
+            }
+
+
+        };
+
+
+    //500 * 100 / 1000 = 50
+    //50 / 100 * 1000 = 500
 
     var html = $("body");
 //.col-	.col-sm-	.col-md-	.col-lg-	.col-xl-
     html.find(".columns").each(function () {
         var this_class = ($(this).attr("class").match(/(^|\s)col-\S+/g) || []).join(' ');
         var $getNumber = !isNaN(parseInt(this_class.replace("col-sm-", ""))) ? parseInt(this_class.replace("col-sm-", "")) : parseInt(this_class.replace("col-lg-", ""));
-
-
-        console.log(this_class + "/" + $getNumber);
         var $replaceValue = "col-xl-" + $getNumber + " col-lg-" + $getNumber + " col-md-" + $getNumber;
         $(this).removeClass(this_class);
         switch ($getNumber) {
@@ -146,6 +198,24 @@ jQuery(document).ready(function () {
     });
 
 
+    html.find("input").each(function () {
+        if ($(this).hasAttr("json-get-data")) {
+            var extractAttr = $(this).attr("json-get-data");
+            var first_json = ToJson(extractAttr);
+            $("input[name='" + first_json.level4 + "']").on("change", function () {
+                var spliteToArray = first_json.level5.split(",");
+                if (!spliteToArray.includes(this.value)) {
+                    $(this).parent().addClass("has-error")
+                }
+
+            }).on("input", function () {
+                $(this).parent().removeClass("has-error")
+
+            })
+            //{'level1':'12','level2':'1543917808594','level3':'1544089385363','level4':'texttwo','level5':'777,888,555,224'}
+            // alert(first_json['level4'])
+        }
+    })
     html.find("fieldset[rel='signature']").each(function (index) {
         var mainElement = $(this);
         var $this_el = mainElement.find(".sign-start");
@@ -217,7 +287,7 @@ jQuery(document).ready(function () {
                                             $("<li title='drewit' class='clicked'><i class='icons icons-signature'></i></li>"),
                                             $("<li title='writeit'><i class='icons icons-text'></i></li>"),
                                             $("<li title='image'><i class='icons icons-image'></i></li>"),
-                                            $("<input type='file' title='image-" + len + "' accept='image/!*'>").change(function (e) {
+                                            $("<input type='file' title='image-" + len + "' accept='image/*'>").change(function (e) {
                                                 var img_el = $("#" + $(this).attr("title"));
                                                 var reader = new FileReader();
                                                 reader.onload = function (e) {
@@ -339,7 +409,7 @@ jQuery(document).ready(function () {
         html.append(signatrue_pad());
 
 
-    });
+    }); //render signatures elements
 
 
     $("input[type='checkbox'],input[type='radio']").on("change", function () {
@@ -348,6 +418,45 @@ jQuery(document).ready(function () {
     $("input[type!='checkbox'],input[type!='radio'],textarea").on("input", function () {
         onFormUpdate();
     });
+
+
+    $("#preview").click(function () {
+        changeMode(false);
+    })
+
+
+    $("#save-pdf").click(function () {
+        $("#loading").show();
+
+        changeToImages();
+    })
+
+
+    var setPageSetting = function (wrap_page, current_page, default_width, default_height, default_orientation) {
+        if (default_orientation == "h") {
+
+            wrap_page.css({
+                "width": default_height + "px",
+                "height": default_width + "px",
+            });
+            current_page.css({
+                "width": wrap_page.outerHeight() + "px",
+                "height": wrap_page.outerWidth() + "px",
+                "transform": "rotate(90deg)",
+                "-webkit-transform": "rotate(90deg)",
+                "-moz-transform": "rotate(90deg)",
+                "filter:progid": "DXImageTransform.Microsoft.BasicImage(rotation=3)",
+                "transform-origin": "center center",
+                "transform-style": "preserve-3d",
+                "position": "absolute",
+                "top": "14.6%",
+                "left": "-20.7%",
+            });
+        }
+
+
+    }
+
 
     var manageHeadersFooters = function (builder_paper) {
 
@@ -422,18 +531,38 @@ jQuery(document).ready(function () {
             return JSON_MAP;
 
         },
+        changeMode = function (d) {
+
+            if (d) {
+                $("#application-form").fadeOut();
+                $("#print").hide();
+                $("#preview").show();
+                $("#save-pdf").show();
+                $("#print-here").show();
+            } else {
+                $("#print").show();
+                $("#preview").hide();
+                $("#print-here").hide();
+                $("#save-pdf").hide();
+
+                $("#application-form").fadeIn();
+
+            }
+        },
         printMode = function () {
             // var $style = "@media print {";
             var $style = "";
 
             var builder_paper = $("#application-form"), //from
                 print_element = $("#print-here"),
-                default_size = "A4",
-                getConversion = $("<div page-size='" + default_size + "' />").resize_page_constrain("page-size", 650);
+                default_size = $settings.settings.mainSize !== "" ? $settings.settings.mainSize : "A4",
+                getSizes = $sizes[default_size].split(" x "),
+                getConversion = $("<div page-size='" + default_size + "' />").resize_page_constrain("page-size", parseInt(getSizes[0]));
 
+            $("input[name='pageSize']").val(default_size);
 
-            var default_width = getConversion.vertical_OnPage_width,
-                default_height = getConversion.vertical_OnPage_height,
+            var default_width = getConversion.vertical_real_width,
+                default_height = getConversion.vertical_real_height,
                 default_orientation = "v",
                 padding = 20,
                 height_counter = "",
@@ -446,22 +575,38 @@ jQuery(document).ready(function () {
 
             var first_page_break = builder_paper.find(".row").eq(0);
             var current_page = null;
+            var wrap_page = null;
 
 
             if (!first_page_break.hasClass("page-break")) {
-                current_page = $("<div class='a4-page target-paper' />").css({
+                wrap_page = $("<div class='a4-page target-paper' />").css({
                     "width": default_width + "px",
                     "height": default_height + "px",
-                    "padding-top": padding + "px",
-                    "padding-bottom": padding + "px"
+                    "padding-top": 0,
+                    "padding-bottom": 0,
+                    "position": "relative",
+                    "overflow": "hidden"
                 });
-                current_page.attr({
+
+                wrap_page.attr({
                     "page-size": default_size,
                     "page-orientation": default_orientation,
                     "id": "pages_" + $(".a4-page").length
                 });
+                current_page = $("<div class='inside-page'/>").css({
+                    "width": default_width + "px",
+                    "height": default_height + "px",
+                    "padding-top": padding + "px",
+                    "padding-bottom": padding + "px",
+                    "overflow": "hidden",
+                    "position": "relative"
+                });
+
+                wrap_page.append(current_page);
                 height_counter = default_height - (padding * 2);
-                print_element.append(current_page);
+                print_element.append(wrap_page);
+                setPageSetting(wrap_page, current_page, default_width, default_height, default_orientation);
+
                 // $style =
             }
             var getHeader = builder_paper.find(".element-header").not(".error_row").eq(0),
@@ -470,6 +615,7 @@ jQuery(document).ready(function () {
             // alert(getHeader.outerHeight());
             var current_page_content_height = 0;
             var HeadersFooters = manageHeadersFooters(builder_paper);
+
             builder_paper
                 .find(".row")
                 .not(".element-header")
@@ -477,30 +623,55 @@ jQuery(document).ready(function () {
                 .not(".error_row")
                 .each(function (index) {
 
+
                     padding = 20;
                     if ($(this).hasClass("page-break")) {
+
+
                         padding = 20;
-                        if ($(this).hasAttr("page-size")) {
-                            var get_conversion = $(this).resize_page_constrain("page-size", 650);
-                            if ($(this).hasAttr("page-orientation") && ($(this).attr("page-orientation") === "h" || $(this).attr("page-orientation") === "v")) {
-                                default_orientation = $(this).attr("page-orientation");
-                            }
-                            if (default_orientation === "h") {
-                                default_width = get_conversion.horizontal_OnPage_width;
-                                default_height = get_conversion.horizontal_OnPage_height;
-                            } else {
-                                default_width = get_conversion.vertical_OnPage_width;
-                                default_height = get_conversion.vertical_OnPage_height;
-                            }
+                        // default_size = ($(this).hasAttr("page-size") && $(this).attr("page-size") !== "") ? $(this).attr("page-size") : "A4";
+                        default_orientation = ($(this).hasAttr("page-orientation") && $(this).attr("page-orientation") !== "") ? $(this).attr("page-orientation") : "v";
+
+                        // var getSizes = $sizes[default_size].split(" x ");
+                        // var getConversion = $(this).resize_page_constrain("page-size", parseInt(getSizes[0]));
 
 
+                        if (default_orientation === "h") {
+                            // alert("h")
+                            default_width = getConversion.horizontal_real_width;
+                            default_height = getConversion.horizontal_real_height;
+                        } else {
+                            // alert("v")
+                            default_width = getConversion.vertical_real_width;
+                            default_height = getConversion.vertical_real_height;
                         }
-                        current_page = $("<div class='a4-page target-paper' />").css({
+
+
+                        wrap_page = $("<div class='a4-page target-paper' />").css({
                             "width": default_width + "px",
                             "height": default_height + "px",
-                            "padding-top": padding + "px",
-                            "padding-bottom": padding + "px"
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "position": "relative",
+                            "overflow": "hidden"
                         });
+
+                        wrap_page.attr({
+                            "page-size": default_size,
+                            "page-orientation": default_orientation,
+                            "id": "pages_" + $(".a4-page").length
+                        });
+                        current_page = $("<div class='inside-page'/>").css({
+                            "width": "100%",
+                            "height": "100%",
+                            "padding-top": padding + "px",
+                            "padding-bottom": padding + "px",
+                            "overflow": "hidden",
+                            "position": "relative"
+                        });
+
+                        height_counter = default_height - (padding * 2);
+
                         if ($(this).hasAttr("page-background") && $(this).attr("page-background") != "") {
                             background = $(this).attr("page-background");
                             current_page.css({
@@ -508,14 +679,14 @@ jQuery(document).ready(function () {
                                 "background-size": "100% 100%"
                             })
                         }
-                        current_page.attr({
-                            "page-size": default_size,
-                            "page-orientation": default_orientation,
-                            "id": "pages_" + $(".a4-page").length
-                        });
-                        height_counter = default_height - (padding * 2);
-                        print_element.append(current_page);
+                        wrap_page.append(current_page);
+
+                        print_element.append(wrap_page);
+
+
                         current_page_content_height = 0;
+                        setPageSetting(wrap_page, current_page, default_width, default_height, default_orientation);
+
                     }
 
                     if (current_page.index() === 1 && HeadersFooters.header_index.indexOf("first") !== -1) {
@@ -572,28 +743,48 @@ jQuery(document).ready(function () {
                     }
 
 
-                    if (!$(this).hasClass("element-unprintable")) {
+                    if (!$(this).hasClass("element-unprintable") && !$(this).hasClass("page-break")) {
                         var getClone = $(this);
                         getClone.find("fieldset[rel='button']").hide();
                         getClone.find("fieldset[rel='file']").hide();
                         getHeight = getClone.height();
 
+
                         if (getHeight >= height_counter) {
+
+
                             padding = 20;
-                            current_page = $("<div class='a4-page target-paper' />").css({
+                            wrap_page = $("<div class='a4-page target-paper' />").css({
                                 "width": default_width + "px",
                                 "height": default_height + "px",
-                                "padding-top": padding + "px",
-                                "padding-bottom": padding + "px"
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "position": "relative",
+                                "overflow": "hidden"
+
                             });
-                            height_counter = default_height - (padding * 2);
-                            current_page.attr({
+
+                            wrap_page.attr({
                                 "page-size": default_size,
                                 "page-orientation": default_orientation,
                                 "id": "pages_" + $(".a4-page").length
                             });
-                            print_element.append(current_page);
+                            current_page = $("<div class='inside-page'/>").css({
+                                "width": "100%",
+                                "height": "100%",
+                                "padding-top": padding + "px",
+                                "padding-bottom": padding + "px",
+                                "overflow": "hidden",
+                                "position": "relative"
+                            });
+
+                            height_counter = default_height - (padding * 2);
+                            wrap_page.append(current_page);
+
+                            print_element.append(wrap_page);
                             current_page_content_height = 0;
+                            setPageSetting(wrap_page, current_page, default_width, default_height, default_orientation);
+
                         }
 
                         height_counter -= getHeight;
@@ -602,36 +793,44 @@ jQuery(document).ready(function () {
                         current_page_content_height += getHeight;
                         current_page.append(getClone.clone());
                         current_page.find(".v-web").removeClass("v-web").addClass("v-print");
-
+                        // alert(this.id+"/"+current_page_content_height)
                         getClone.find("fieldset[rel='button']").show();
                         getClone.find("fieldset[rel='file']").show();
                     }
 
                 });
-            print_element.find("*").each(function (index) {
+
+
+            print_element.find("dpre").each(function (index) {
                 if ($(this).hasClass("a4-page")) {
 
-                    $style += ".a4-page[page-size='"+$(this).attr('page-size')+"'] {\n";
+                    $style += ".a4-page[page-size='" + $(this).attr('page-size') + "'] {\n";
 
-/*
-                    $style += "}\r\n";
+                    /*
+                                        $style += "}\r\n";
 
-                    $style += "#" + this.id + "{\n";
-*/
-var $size = $sizes[$(this).attr('page-size')].split(" x ");
-var $width = $size[0]+"px";
-var $height = $size[1]+"px";
+                                        $style += "#" + this.id + "{\n";
+                    */
+                    /*
+                                        if ($(this).attr("page-size") !== "") {
+                                            default_size = $(this).attr("page-size");
+                                        }
+                    */
 
-                    $style += "size:"+$(this).attr('page-size')+";\n";
-                    if($(this).attr('page-orientation') === "v"){
-                        $style += "width:"+$width+" !important;\n";
-                        $style += "height:"+$height+" !important;\n";
-                    }else{
-                        $style += "width:"+$height+" !important;\n";
-                        $style += "height:"+$width+" !important;\n";
+                    var $size = $sizes[default_size].split(" x ");
+                    var $width = $size[0] + "px";
+                    var $height = $size[1] + "px";
+
+                    $style += "size:" + $(this).attr('page-size') + ";\n";
+                    if ($(this).attr('page-orientation') === "v") {
+                        $style += "width:" + $width + " !important;\n";
+                        $style += "height:" + $height + " !important;\n";
+                    } else {
+                        $style += "width:" + $height + " !important;\n";
+                        $style += "height:" + $width + " !important;\n";
                     }
-                    if($(this).css("background-image") === "nofffne"){
-                        $style += "background-image:"+$(this).css("background-image")+";\n";
+                    if ($(this).css("background-image") === "none") {
+                        $style += "background-image:" + $(this).css("background-image") + ";\n";
                         $style += "background-size:100% 100%;\n";
                     }
                     $style += "}\r\n";
@@ -640,81 +839,113 @@ var $height = $size[1]+"px";
                     var printStyle = $(this).attr("print-style");
                     $(this).attr("style", printStyle);
                 }
-            })
+            });
             $style += "";
 
 
-            popitup($style)
-            // $("#print-style").append($style);
+            print_element.find("*").each(function () {
+                if ($(this).hasAttr("print-style")) {
+                    var printStyle = $(this).attr("print-style");
+                    $(this).attr("style", printStyle);
+                }
+            })
+            changeMode(true);
+            $("#loading").hide();
+
+
+        },
+        images = [],
+        changeToImages = function () {
+        var count_array = $("#print-here .a4-page").length;
+            if ($("#print-here > img").length === 0) {
+                $("#print-here .a4-page").each(function (index) {
+                    $(".image-drew-signatrue").map(function () {
+                        if ($(this).attr("src") === "") $(this).remove();
+                    })
+                        // alert($(this).css("background-color").substr(0,12))
+                    var background = $(this).find(".inside-page").css("background");
+                    // console.log(background)
+                    if ($(this).find(".inside-page").css("background-color").substr(0, 12) == "rgba(0, 0, 0" && $(this).find(".inside-page").css("background-image") == "none") {
+                        background = "#ffffff"
+                    }
+
+                    if (background.substr(0, 1) !== "#" && background.substr(0, 1) !== "r") {
+                        background = $(this).find(".inside-page").css("background-image");
+                        background = background.substr(5, background.length - 7);
+                    }
+
+                    // alert(background.substr(0,1));
+
+                    var clone = document.getElementsByClassName("inside-page")[index];
+
+                    var $this = $(this);
+
+
+                    domtoimage.toPng(clone).then(function (blob) {
+
+                        var img = new Image();
+
+                        img.src = blob;
+                        images.push(blob);
+                        $this.html(img);
+                        $this.find("img").unwrap();
+
+                        if (images.length === count_array) {
+                            savePdf();
+                        }
+
+                    }).catch(function (error) {
+                        console.error('oops, something went wrong!', error);
+                    });
+
+
+                })
+
+            } else {
+                savePdf();
+            }
+
+        },
+        savePdf = function () {
+            var _images = [],
+                default_size = $settings.settings.mainSize !== "" ? $settings.settings.mainSize : "A4",
+                getSizes = $sizes[default_size].split(" x ");
+
+            // var doc = new jsPDF();
+
+            var i;
+            for (i = images.length-1; i >= 0; i--) {
+
+
+                // doc.addImage(images[i], "JPEG", 0, 0, parseFloat(getSizes[0]), parseFloat(getSizes[1]), "", "SLOW", 0);
+
+
+                _images.push({
+                    data: images[i],
+                });
+            }
+
+            // doc.save("dsdsdsds");
+
+
+            $("form input[name='data']").val(JSON.stringify(_images));
+
+            $("#savepdf").submit();
+            $("#loading").hide();
 
         };
 
+
     $("#print").on("click", function () {
-        $("#print-style").html("");
-        $("button[data-target='.print-screen']").click();
+        // $("#print-style").html("");
+        // $("button[data-target='.print-screen']").click();
+
+        $("#loading").show();
         printMode();
-        //$("#print-here").print();
-        // popitup();
+
+        //popitup();
     });
 
-    function popitup($style) {
-        var $application = $("#print-here").html();
-
-
-        newwindow2 = window.open('', 'popUpWindow', 'height=500,width=700,left=100,top=100,resizable=0,scrollbars=yes');
-        var tmp = newwindow2.document;
-        tmp.write('<html><head>' +
-            '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\n' +
-            '    <!-- Meta, title, CSS, favicons, etc. -->\n' +
-            '    <meta charset="utf-8">\n' +
-            '    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n' +
-            '    <meta name="viewport" content="width=device-width, initial-scale=1">\n' +
-            '    <meta name="viewport"\n' +
-            '          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">\n' +
-            '\n' +
-            '    <title>Test</title>\n' +
-            '\n' +
-            '    <meta name="url" content="{{ route(\'route\') }}">\n' +
-            '\n' +
-            '    <link href="/js/plugins/jquery-ui/jquery-ui.css/" rel="stylesheet">\n' +
-            '    <link href="/css/onform.css" rel="stylesheet">\n' +
-            '    <link href="/js/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">\n' +
-            '    <link href="/js/plugins/bootstrap_2/dist/css/bootstrap-grid.css" rel="stylesheet">\n' +
-            '    <link href="/css/bootstrap/bootstrap-print.min.css" rel="stylesheet">\n' +
-            '\n' +
-            '    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">\n' +
-            '    <link href="/css/fonts.css" rel="stylesheet">\n' +
-            '    <link href="/css/print-mode.css" rel="stylesheet">\n' +
-            '    <link href="/js/plugins/signature_pad/css/signature-pad.css" rel="stylesheet">\n');
-        tmp.write('<style type="text/css">'+$style+'</style>');
-        tmp.write('</head><body onload="window.print()" style="overflow-x: hidden">');
-        tmp.write('<div id="print-mode">' + $application + '</div>');
-        tmp.write('<p id="close-btn"><a href="javascript:self.close()">close</a></p>');
-        tmp.write('<script src="/js/plugins/jquery/dist/jquery.min.js"></script>');
-        tmp.write('</body></html>');
-        tmp.close();
-
-    }
-
-    function printDiv(divName) {
-        $(".v-web").removeClass("v-web").addClass("v-popup");
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
-        $(".v-popup").removeClass("v-popup").addClass("v-web");
-
-    }
-
-    /*
-        $.validate({
-            modules : 'location, logic, date',
-            onModulesLoaded: function() {
-                $('input[data-validation*="country"]').suggestCountry();
-            }
-        });
-    */
 
 });
 

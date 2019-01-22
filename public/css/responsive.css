@@ -68,10 +68,12 @@ div#right-panel {
     .left-bar-btn {
         margin-left: -40px;
     }
-
-
 }
-
+@media (min-width: 1600px){
+    .left-bar-btn {
+        margin-left: -67px;
+    }
+}
 @media (max-width: 1440px) and (min-width: 1200px){
     .left-bar-btn {
         margin-left: -69px;

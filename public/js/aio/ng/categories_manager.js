@@ -699,6 +699,7 @@
 
 
 		self.ok = function () {
+
 			$rootScope.bussy=true;
 
 			var fd = new FormData();
@@ -819,10 +820,10 @@
 					headers: {'Content-Type': undefined}
 				}).then(function successCallback(response) {
 					$uibModalInstance.close(response);
-					console.log(response);
+					console.log("Success: "+response);
 					$rootScope.bussy=false;
 				}, function errorCallback(response) {
-					console.log(response);
+					console.log("Error: "+response);
 					$rootScope.bussy=false;
 				});
 			}

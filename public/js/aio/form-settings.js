@@ -205,7 +205,6 @@ $(document).ready(function () {
         clicked.find(".prop-target").attr("json-get-data", $Json);
         $("#form_categories").find("input[type='checkbox']:checked").prop("checked", false).change();
 
-        saveCache();
     });
 
     $("#copy_get_switcher button").on("click", function () {

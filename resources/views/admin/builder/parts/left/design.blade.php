@@ -668,19 +668,19 @@
                 </div>
                 <div class="form-builder col-lg-6 element-right" style="padding-right: 0;padding-left: 0;">
                     <select>
-                        <option class="text" value="custom">Text</option>
+                        <option class="text" value="text">Text</option>
                         <option class="password" value="password">Password</option>
                         <option class="date" value="date">Date</option>
-                        <option class="country" value="country">C List</option>
-                        <option class="homenumber" value="number">HP Number</option>
-                        <option class="worknumber" value="number">WP Number</option>
-                        <option class="mobilenumber" value="number">MP Number</option>
-                        <option class="phonenumber" value="number">Phone</option>
+                        {{--<option class="country" value="country">C List</option>--}}
+                        {{--<option class="homenumber" value="number">HP Number</option>--}}
+                        {{--<option class="worknumber" value="number">WP Number</option>--}}
+                        {{--<option class="mobilenumber" value="number">MP Number</option>--}}
+                        {{--<option class="phonenumber" value="number">Phone</option>--}}
                         <option class="number" value="number">Number</option>
                         <option class="email" value="email">Email</option>
                         <option class="url" value="url">URL</option>
-                        <option class="iban" value="iban">IBAN</option>
-                        <option class="bic" value="bic">BIC</option>
+                        {{--<option class="iban" value="iban">IBAN</option>--}}
+                        {{--<option class="bic" value="bic">BIC</option>--}}
                     </select>
                 </div>
             </div> {{-- Limit Entry--}}

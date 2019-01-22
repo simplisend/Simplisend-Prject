@@ -455,7 +455,6 @@ function renderConditions() {
         }
         self.removeCondition = function (condition_key) {
             self.conditions.splice(condition_key, 1);
-            saveCache();
         }
 
         self.toggleSelection = function (arr, value) {
@@ -480,17 +479,14 @@ function renderConditions() {
                 operation: "Filled"
             });
             self.currentIfIndex = 0;
-            saveCache();
         }
         self.removeIf = function (condition_key, if_key) {
             if (self.conditions[condition_key].if.length > 1) {
                 self.conditions[condition_key].if.splice(if_key, 1);
-                saveCache();
             }
         }
         self.changeIfSub = function (condition_key, if_key, sub) {
             self.conditions[condition_key].if[if_key].sub = sub;
-            saveCache();
         }
 
 
@@ -501,11 +497,9 @@ function renderConditions() {
                 objects: [],
                 popup: ""
             });
-            saveCache();
         }
         self.removeDo = function (condition_key, do_key) {
             self.conditions[condition_key].do.splice(do_key, 1);
-            saveCache();
         }
 
         self.addElse = function (condition_key) {
@@ -514,21 +508,19 @@ function renderConditions() {
                 objects: [],
                 popup: ""
             });
-            saveCache();
         }
         self.removeElse = function (condition_key, else_key) {
             self.conditions[condition_key].else.splice(else_key, 1);
-            saveCache();
         }
 
         self.addVal = function (condition_key, if_key, type) {
             self.conditions[condition_key].if[if_key].value_2.push({sub: type, val: ""});
-            saveCache();
+
         }
         self.removeVal = function (condition_key, if_key, val_key) {
             if (self.conditions[condition_key].if[if_key].value_2.length > 1) {
                 self.conditions[condition_key].if[if_key].value_2.splice(val_key, 1);
-                saveCache();
+
             }
         }
 
@@ -536,12 +528,12 @@ function renderConditions() {
             self.conditions[key].if[if_key].value_1 = JSON.parse(JSON.stringify(self.inputList.fieldsets[self.conditions[key].if[if_key].value_1_key]));
             self.conditions[key].if[if_key].value_2 = [{sub: "", val: ""}];
             self.conditions[key].if[if_key].operation = "Filled";
-            saveCache();
+
         }
 
         self.operationChange = function (key, if_key) {
             self.conditions[key].if[if_key].value_2 = [{sub: "", val: ""}];
-            saveCache();
+
         }
 
         self.inputNotAvilableFor = function (input, notAvilable) {
@@ -555,7 +547,7 @@ function renderConditions() {
             return true;
         }
         self.conditionChange = function () {
-            saveCache();
+
         }
 
     }]);

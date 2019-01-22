@@ -282,6 +282,7 @@
         @endif
         <input type="hidden" name="key">
         <input type="hidden" name="form_name" value="{{ $get_build->form_name }}">
+        <input type="hidden" name="form_icon" value="{{ $get_build->form_icon }}">
         <input type="hidden" name="category" value="{{ $get_build->cat_id }}">
         <input type="hidden" name="html">
         <input type="hidden" name="replace" value="false">
@@ -927,6 +928,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="categories-list save-form-to-db">
+                        <div class="form-group" id="form-icon" style="width: 97%;">
+                            <label for="form_icon">Form Icon</label>
+                            <input type="file" name="form_icon"
+                                   onchange="$(this).nextAll().hide();getBase64(document.querySelector('#'+this.id).files[0])"
+                                   class="form-control"
+                                   id="form_icon">
+                            <small class="text-danger" style="display: none">Choose a form icon</small>
+                        </div>
                         <div class="form-group" id="form-name" style="width: 97%;">
                             <label for="real-name">Choose Name</label>
                             <input type="text" name="form_name" oninput="$(this).nextAll().hide()" class="form-control"
@@ -1034,27 +1043,23 @@
     var $settings = {
         form_id: '{{ $get_build->id }}',
         main_language: '{{ $get_build->main_language }}',
-        settings: function (){
-            var $SON = ("<?php echo $get_build->settings ?>").split("'").join('"');
-
-            try {
-                $SON = JSON.parse($SON);
-            } catch (e) {
-                $SON = JSON.parse("[]");
-            }
+        settings: function () {
+            var $SON = {};
+            @if($get_build->settings != null && $get_build->settings != "")
+                $SON = JSON.parse('<?php echo $get_build->settings ?>');
+            @endif
 
 
-            console.log($SON);
-
-
-            if(!$SON.hasOwnProperty("mainLanguage")){
+            if (!$SON.hasOwnProperty("mainLanguage")) {
                 return {
                     mainLanguage: "",
                     mainSize: "",
                 };
-            }else{
-                return JSON.stringify($SON);
+            } else {
+                return $SON;
             }
+
+
         }(),
         additional_languages: "{{ rtrim(str_replace(",,",",",$get_build->languages),",") }}",
         form_name: '{{ $get_build->form_name }}',
@@ -1065,8 +1070,10 @@
     };
 
 
-
     $(document).ready(function () {
+
+        $("input[name='settings']").val(FromJson($settings.settings));
+
         var getConfirm = function () {
             var $loopOptions = function () {
                 var e = "";
@@ -1134,10 +1141,10 @@
                             };
                             $.alert($msg);
 
-                            if($msg.substr(0,1) === "P"){
+                            if ($msg.substr(0, 1) === "P") {
                                 return;
                             }
-                            $("input[name='settings']").val(JSON.stringify($settings.settings));
+                            $("input[name='settings']").val(FromJson($settings.settings));
                             onLoad();
                             saveCache();
 

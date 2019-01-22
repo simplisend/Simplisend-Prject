@@ -1,3 +1,4 @@
+
 var MAIN_URL = $("meta[name='url']").attr("content");
 
 var getClean = function ($this) {
@@ -78,7 +79,7 @@ var getClean = function ($this) {
         html_backup.find("input[name='popup_html']").val(draftElement.html());
 
 
-        html_backup.find("input[name='style']").val($("#pabaPvo5Dzzgm18kz4shu80WqLWtswXMrFO29Wbqg").html());
+        // html_backup.find("input[name='style']").val($("#pabaPvo5Dzzgm18kz4shu80WqLWtswXMrFO29Wbqg").html());
         html_backup.find("input[name='scripts']").val(JSON.stringify(_conditions));
 
 
@@ -90,8 +91,6 @@ var getClean = function ($this) {
             type: "post",
             url: url,
             data: data, // serializes the form's elements.
-
-
             beforeSend: function (jqXHR, settings) {
             },
             success: function (data) {
@@ -104,7 +103,6 @@ var getClean = function ($this) {
             error: function (xhr, status, error) {
 
             },
-
             dataType: "html"
         });
 
@@ -115,14 +113,12 @@ var getClean = function ($this) {
         z_index();
 
 
-
         var url = "/clearcache";
 
-        $.get( url, function() {
+        $.get(url, function () {
             window.location.replace("/builder/");
             SOMTHING_CHANGED = false;
         });
-
 
 
     },
@@ -134,27 +130,48 @@ var getClean = function ($this) {
         saveFormAs();
     },
 
+    getBase64 = function (file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        if (file.type.match("image.*")) {
+            reader.onload = function () {
+                // console.log(reader.result);
+
+                // Resize the image using canvas
+                $("input[type='hidden'][name='form_icon']").val(reader.result);
+
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+    },
     fillSavingForm = function (id) {
         var html_backup = $(id);
+        var form_name;
         if (html_backup.find("input[name='key']").length !== 0 && html_backup.find("input[name='key']").val() !== "save") {
-            if($("input[name='categories-radio']:checked").length === 0){
+            if ($("input[name='categories-radio']:checked").length === 0) {
                 $(".save-form-to-db").next("small").show();
+
+
                 return;
-            }else if($(".save-form-to-db input[name='form_name']").val() === ""){
+            } else if ($(".save-form-to-db input[name='form_name']").val() === "") {
                 $("#form-name").find("small").eq(1).show();
+
                 return;
-            }else{
-                $("#form-main-name").find("h2").text($(".save-form-to-db input[name='form_name']").val())
+            } else {
+                $("#form-main-name").find("h2").text($(".save-form-to-db input[name='form_name']").val());
             }
         }
-        addWordGroup();
+
 
         var draftElement = $("#copy_to_store");
         draftElement.find(".ui-autocomplete").remove();
         //fill name input
-        var form_name = $("#form-main-name").find("h2").text();
+        form_name = $(".save-form-to-db #form-name").find("input").val();
         if (form_name !== "form-name") {
-            html_backup.find("input[name='form_name']").val(form_name);
+            $("input[name='form_name']").val(form_name);
         }
         //////////////////////////////
 
@@ -188,10 +205,15 @@ var getClean = function ($this) {
             }
 
         }).get().join();
-
         html_backup.find("input[name='languages']").val($ligua);
+
+        // console.log(ToJson($settings.main_language));
         //////////////////////////////
         html_backup.find("input[name='main_language']").val($settings.main_language);
+
+        //////////////////////////////
+        html_backup.find("input[name='settings']").val(FromJson($settings.settings));
+
 
         //fill style input
         html_backup.find("input[name='scripts']").val(JSON.stringify(_conditions));
@@ -213,7 +235,9 @@ var getClean = function ($this) {
         var html_backup = $("#html_save");
         var draftElement = $("#copy_to_store");
 
-        if(fillSavingForm("#html_save") !== false){
+        if (fillSavingForm("#html_save") !== false) {
+
+
             var url = html_backup.attr("action");
             var data = html_backup.serialize();
 
@@ -228,19 +252,22 @@ var getClean = function ($this) {
                 },
                 success: function (data) {
                     if (data.toString().split("-")[0] === "exist") {
-                        if (confirm("This form name is already exist do you want to replace?")){
+                        if (confirm("This form name is already exist do you want to replace?")) {
                             html_backup.find("input[name='replace']").val("true");
                             html_backup.find("input[name='current_form_id']").val(data.toString().split("-")[1]);
                             saveFormAs();
                         }
                     } else {
+                        var $link = "";
                         if (html_backup.find("input[type='hidden'][name='key']").val() === "new" || html_backup.find("input[name='replace']").val() === "true") {
-                            if(html_backup.find("input[name='replace']").val() === "true"){
-                                window.location.replace("/builder/" + html_backup.find("input[name='current_form_id']").val());
-                            }else{
-                                window.location.replace("/builder/" + data);
+                            if (html_backup.find("input[name='replace']").val() === "true") {
+                                $link = "/builder/" + html_backup.find("input[name='current_form_id']").val();
+                            } else {
+                                $link = "/builder/" + data;
                             }
 
+                            // alert($link)
+                            window.location.replace($link);
                         }
                         html_backup.find("input:not([name='form_name'])").val("");
                         html_backup.find("input[type='hidden'][name='current_form_id']").val(data);
@@ -249,7 +276,9 @@ var getClean = function ($this) {
                         $("button.close").click();
                         SOMTHING_CHANGED = false;
                     }
+
                     $loader.hide();
+                    addWordGroup();
                 },
                 error: function (xhr, status, error) {
 
@@ -257,6 +286,8 @@ var getClean = function ($this) {
 
                 dataType: "html"
             });
+
+
         }
 
     },
@@ -270,7 +301,7 @@ var getClean = function ($this) {
         var jsonObj = {};
         $(".modes .text-editable, .modes option").each(function (index) {
 
-            if($(this).hasAttr("lang")) {
+            if ($(this).hasAttr("lang")) {
 
                 var id = $(this).attr("id");
                 var lang = $(this).attr("lang");
@@ -283,25 +314,43 @@ var getClean = function ($this) {
             }
         });
 
-        console.log("json:"+FromJson(jsonObj));
-        console.log("form_id:"+$settings.form_id);
-        console.log("main_language:"+$settings.main_language);
 
-
-        $.post($url, {json: FromJson(jsonObj),form_id: $settings.form_id,main_language: $settings.main_language}, function (data, statues) {
-            if(statues.toString() === "success"){
+        var jqxhr = $.post($url, {
+            json: FromJson(jsonObj),
+            form_id: $settings.form_id,
+            main_language: $settings.main_language
+        }, function (data, statues) {
+            // alert( "success" );
+            if (statues.toString() === "success") {
                 for (var js = 0; js < data.length; js++) {
 
                     var $statues = data[js]["statues"];
                     var $id = data[js]["id"];
                     var $lang = data[js]["lang"];
 
-                    $("#" + $id).attr("lang", FromJson($lang));
+                    if ($lang !== undefined) {
+                        $("#" + $id).attr("lang", FromJson($lang));
+                    }
                 }
             }
+
+        })
+            .done(function () {
+                // alert( "second success" );
+            })
+            .fail(function () {
+                alert("error");
+            })
+            .always(function () {
+                // alert( "finished" );
+            });
+
+// Perform other work here ...
+
+// Set another completion function for the request above
+        jqxhr.always(function () {
+            // alert( "second finished" );
         });
-
-
 
 
         return $complate;
@@ -313,7 +362,7 @@ var getClean = function ($this) {
 
         $(".modes .text-editable, .modes option").each(function () {
             var $thisEl = $(this);
-            if($thisEl.hasAttr("lang")){
+            if ($thisEl.hasAttr("lang")) {
                 var $getLang = $thisEl.attr("lang");
                 var $toJson = ToJson($getLang);
                 $getLang.split("/").join("{{leftSlash}}");
@@ -618,6 +667,61 @@ var getClean = function ($this) {
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
 
+    },
+
+    HTMLToJSON = function(){
+        // Test with an element.
+        var initElement = document.getElementById("builder-mode");
+        var json = mapDOM(initElement, true);
+        console.log(json);
+
+
+        function mapDOM(element, json) {
+            var treeObject = {};
+
+            // If string convert to document Node
+            if (typeof element === "string") {
+                if (window.DOMParser) {
+                    parser = new DOMParser();
+                    docNode = parser.parseFromString(element,"text/xml");
+                } else { // Microsoft strikes again
+                    docNode = new ActiveXObject("Microsoft.XMLDOM");
+                    docNode.async = false;
+                    docNode.loadXML(element);
+                }
+                element = docNode.firstChild;
+            }
+
+            //Recursively loop through DOM elements and assign properties to object
+            function treeHTML(element, object) {
+                object["type"] = element.nodeName;
+                var nodeList = element.childNodes;
+                if (nodeList != null) {
+                    if (nodeList.length) {
+                        object["content"] = [];
+                        for (var i = 0; i < nodeList.length; i++) {
+                            if (nodeList[i].nodeType == 3) {
+                                object["content"].push(nodeList[i].nodeValue);
+                            } else {
+                                object["content"].push({});
+                                treeHTML(nodeList[i], object["content"][object["content"].length -1]);
+                            }
+                        }
+                    }
+                }
+                if (element.attributes != null) {
+                    if (element.attributes.length) {
+                        object["attributes"] = {};
+                        for (var i = 0; i < element.attributes.length; i++) {
+                            object["attributes"][element.attributes[i].nodeName] = element.attributes[i].nodeValue;
+                        }
+                    }
+                }
+            }
+            treeHTML(element, treeObject);
+
+            return (json) ? JSON.stringify(treeObject) : treeObject;
+        }
     };
 
 
@@ -626,11 +730,8 @@ $(function ($) {
     var added = false;
     var removed = false;
 
-
-
-
     $("#new-form").on("click", function () {
-        if(SOMTHING_CHANGED || $settings.cache !== "0"){
+        if (SOMTHING_CHANGED || $settings.cache !== "0") {
             $.confirm({
                 animation: 'scale',
                 closeAnimation: 'scale',
@@ -650,10 +751,9 @@ $(function ($) {
                     },
                 }
             });
-        }else{
+        } else {
 
         }
-
 
 
     });

@@ -11,6 +11,7 @@
     "php": ">=7.0.0",
     "ext-json": "*",
     "fideloper/proxy": "^4.0",
+    "gumlet/php-image-resize": "^1.9",
     "intervention/image": "dev-master",
     "laravel/framework": "5.5.*",
     "laravel/tinker": "~1.0",

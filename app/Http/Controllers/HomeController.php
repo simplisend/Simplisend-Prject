@@ -7,6 +7,8 @@ use App\elements_library;
 use App\forms_builds;
 use App\forms_fields;
 use App\translations;
+use Gumlet\ImageResize;
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -72,7 +74,8 @@ class HomeController extends Controller {
 				$get_build = $builds->get()[0];
 
 			}
-		} elseif ( $build_id == "n" ) {
+		}
+		elseif ( $build_id == "n" ) {
 			$builds = DB::table( 'forms_builds' )->where( [ 'user_id' => Auth::id(), "cache" => "1" ] );
 			if ( $builds->count() != 0 ) {
 				$username = Auth::user()['username'];
@@ -131,7 +134,8 @@ class HomeController extends Controller {
 				$get_build = $builds->get()[0];
 
 			}
-		} else {
+		}
+		else {
 			$builds = DB::table( 'forms_builds' )->where( [ 'user_id' => Auth::id(), 'id' => $build_id ] );
 			if ( $builds->count() != 0 ) {
 				$get_build = $builds->get()[0];
@@ -239,7 +243,7 @@ class HomeController extends Controller {
 				  'properties'    => $request->properties,
 				  'languages'     => $request->langua,
 				  'main_language' => $request->main_language,
-				  'settings'      => $request->settings,
+				  'settings'      => implode('"',explode("'",$request->settings)),
 				  'form_name'     => $request->form_name,
 				  'related_forms' => $request->related_forms,
 				  'target_id'     => $request->target_id,
@@ -247,7 +251,8 @@ class HomeController extends Controller {
 				  'scripts'       => $request->scripts
 			  ] );
 
-		} else {
+		}
+		else {
 
 			$username = Auth::user()['username'];
 
@@ -277,7 +282,7 @@ class HomeController extends Controller {
 			$table->target_id     = $request->target_id;
 			$table->related_forms = $request->related_forms;
 			$table->properties    = $request->properties;
-			$table->settings      = $request->settings;
+			$table->settings      = implode('"',explode("'",$request->settings));
 			$table->languages     = $request->langua;
 			$table->scripts       = $request->scripts;
 			$table->popup_html    = $popup_filename;
@@ -320,6 +325,9 @@ class HomeController extends Controller {
 				$table->html          = "null";
 				$table->cache         = false;
 				$table->form_name     = $request->form_name;
+
+
+				$table->form_icon     = null;
 				$table->main_language = $request->main_language;
 				$table->related_forms = $request->related_forms;
 				$table->style         = $request->style;
@@ -335,16 +343,18 @@ class HomeController extends Controller {
 
 
 				$username = Auth::user()['username'];
+				$hash = $username . str_replace( ".", "", hexdec( uniqid() ) );
+
 				$path     = storage_path() . "/users/" . $username . '/forms/html/' . $table->id . "/";
 				File::isDirectory( $path ) or File::makeDirectory( $path, 0777, true, true );
 
-				$html_filename = "html_" . $username . str_replace( ".", "", hexdec( uniqid() ) );
+				$html_filename = "html_" . $hash;
 				$html_content  = html_entity_decode( $request->html );
 				$html_fp       = fopen( $path . $html_filename . ".html", "wb" );
 				fwrite( $html_fp, $html_content );
 				fclose( $html_fp );
 
-				$popup_filename = "popup_" . $username . str_replace( ".", "", hexdec( uniqid() ) );
+				$popup_filename = "popup_" . $hash;
 				$popup_content  = html_entity_decode( $request->popup );
 				$popup_fp       = fopen( $path . $popup_filename . ".html", "wb" );
 				fwrite( $popup_fp, $popup_content );
@@ -352,9 +362,31 @@ class HomeController extends Controller {
 
 				$build = DB::table( 'forms_builds' )->where( [ 'user_id' => Auth::id(), "id" => $table->id ] );
 
+
+
+				// Create image resource from Base64code
+				$split_parts = explode( ";base64,", $request->form_icon );//split image for two parts
+
+				$extension = explode( "/", $split_parts[0] )[1];//get extension
+				$base64    = $split_parts[1];//part of base64 code
+
+				//start convert to image
+				$base64ToImage = null;
+				$base64ToImage = str_replace( 'data:image/'.$extension.';base64,', '', $base64 );
+				$base64ToImage = str_replace( ' ', '+', $base64ToImage );
+
+				$image = ImageResize::createFromString(base64_decode($base64ToImage));
+				$imageName = $hash . '.' . $extension;
+
+				$image->resizeToWidth(100);
+				$image->save($path.''.$imageName);
+
+
+
 				$build->update( [
 					'html'       => $html_filename,
-					'popup_html' => $popup_filename
+					'popup_html' => $popup_filename,
+					'form_icon' => $imageName
 				] );
 
 				$id = $table->id;
@@ -364,7 +396,8 @@ class HomeController extends Controller {
 			}
 
 
-		} elseif ( $key == "save" ) {
+		}
+		elseif ( $key == "save" ) {
 			$build = DB::table( 'forms_builds' )->where( [
 				'user_id' => Auth::id(),
 				"id"      => $request->current_form_id
@@ -375,7 +408,7 @@ class HomeController extends Controller {
 				'form_name'     => $request->form_name,
 				'properties'    => $request->properties,
 				'main_language' => $request->main_language,
-				'settings' => $request->settings,
+				'settings' => implode('"',explode("'",$request->settings)),
 				'related_forms' => $request->related_forms,
 				'languages'     => $request->langua,
 				'style'         => $request->style,
@@ -585,9 +618,10 @@ class HomeController extends Controller {
 		$return        = [];
 //		$reformat = implode('<br>"', explode('"', $reformat));
 
-		$mainlanguage = $request->main_language;
+		$mainlanguage = strtolower($request->main_language);
 		$tojson       = json_decode( $this->ToJson( $request->json ), true );
 		$form_id      = $request->form_id;
+
 
 		for ( $js = 0; $js < count( $tojson ); $js ++ ) {
 			$id      = $tojson[ $js ]["id"]; //ID of the html element not for database table

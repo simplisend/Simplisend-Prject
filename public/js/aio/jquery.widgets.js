@@ -460,26 +460,30 @@
 
     };
     $.fn.getCssStyle = function (proprety) {
-        var $this = $(this),
-            getStyleTag = $this.attr("style").split(";"),
-            getValue = "";
+        var $this = $(this);
+        if($this.hasAttr("style")){
+            var getStyleTag = $this.attr("style").split(";"),
+                getValue = "";
 
-        for (var i = 0; i < getStyleTag.length; i++) {
+            for (var i = 0; i < getStyleTag.length; i++) {
 
 
-            var $trim = $.trim(getStyleTag[i]);
+                var $trim = $.trim(getStyleTag[i]);
 
-            if ($trim.startsWith(proprety)) {
-                var fetchStyle = getStyleTag[i].split(":")[1];
-                getValue = fetchStyle.replace("!important", "");
+                if ($trim.startsWith(proprety)) {
+                    var fetchStyle = getStyleTag[i].split(":")[1];
+                    getValue = fetchStyle.replace("!important", "");
+                }
+
+
             }
 
 
+        }else{
+            getValue = "";
         }
 
         return getValue;
-
-
     };
     /**************************************** End Manage Class ****************************************/
 

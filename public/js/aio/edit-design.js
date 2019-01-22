@@ -827,7 +827,9 @@
             url
             iban"
             bic*/
-            var $swi = $("#form_input_type select");
+            var $swi = $("#form_input_type select")
+
+/*
             var trim_data_validation = properties.data_validation.replace("required ", "");
 
             if (trim_data_validation.indexOf("number") === -1) {
@@ -839,8 +841,11 @@
                     $swi.val($swi.find("." + trim_data_validation).val()).change();
                 }
             }
+*/
             // alert(properties.tag);
-            if (properties.tag === "INggggPUT") {
+            if (properties.tag === "INPUT") {
+                $swi.val(properties.type).change();
+
                 if (properties.type === "text" || properties.type === "email") {
 
                     limit_entry.find("#character").show();
@@ -1054,7 +1059,7 @@ var systemClasses = [
     $(".replacable-panel .tools-list *[data-html='select-mode']").click();
         var builder_paper = $("#builder-mode > .builder-paper"), //from
             print_element = $("#print-mode"),
-            default_size = $settings.settings().mainSize,
+            default_size = $settings.settings.mainSize ? $settings.settings.mainSize : "A4",
             getConversion = $("<div page-size='" + default_size + "' />").resize_page_constrain("page-size", 650);
 
         var default_width = getConversion.vertical_OnPage_width,
@@ -1082,6 +1087,8 @@ var systemClasses = [
             });
             height_counter = default_height - (padding * 2);
             print_element.append(current_page);
+
+
         }
         var getHeader = builder_paper.find(".element-header").not(".error_row").eq(0),
             getFooter = builder_paper.find(".element-footer").not(".error_row").eq(0);
@@ -1130,6 +1137,7 @@ var systemClasses = [
                     height_counter = default_height - (padding * 2);
                     print_element.append(current_page);
                     current_page_content_height = 0;
+
                 }
 
                 if (current_page.index() === 1 && HeadersFooters.header_index.indexOf("first") !== -1) {
@@ -1190,7 +1198,7 @@ var systemClasses = [
                     getClone.find("fieldset[rel='file']").hide();
                     getHeight = getClone.height();
 
-                    if (getHeight >= height_counter) {
+                    if (getHeight > height_counter) {
                         padding = 20;
                         current_page = $("<div class='a4-page target-paper' />").css({
                             "width": default_width + "px",
@@ -1222,6 +1230,12 @@ var systemClasses = [
                 var printStyle = $(this).attr("print-style");
                 $(this).attr("style",printStyle);
             }
+        })
+        $(".replacable-panel > ul.pages-list").html("");
+        print_element.find(".a4-page").each(function () {
+            $(".replacable-panel > ul.pages-list").append(
+                $("<li />").append($("<div class='page' />"), $(this).index())
+            )
         })
 
     },
@@ -1468,17 +1482,17 @@ var systemClasses = [
                 'style2': {
                     key: "radial",
                     attrbute: "background-image",
-                    value: "-webkit-radial-gradient(white 0%, black 50%)"
+                    value: "-webkit-radial-gradient(white 0%, black 100%)"
                 },
                 'style3': {
                     key: "linear",
                     attrbute: "background-image",
-                    value: "-webkit-linear-gradient(left, white 0%, black 50%)"
+                    value: "-webkit-linear-gradient(left, white 0%, black 100%)"
                 },
                 'style4': {
                     key: "linear",
                     attrbute: "background-image",
-                    value: "-webkit-linear-gradient(90deg, white 0%, black 50%)"
+                    value: "-webkit-linear-gradient(90deg, white 0%, black 100%)"
                 },
                 'style5': {key: "transparent", attrbute: "background-color", value: "transparent"}
             };
@@ -1549,6 +1563,7 @@ var systemClasses = [
             }
         });
 
+/*
         var $url = $("#links").find("#getFieldsList").attr("content");
 
 
@@ -1575,6 +1590,7 @@ var systemClasses = [
 
 
         });
+*/
 
 
         $("#limit-switchers").find("input").change(function () {
@@ -1637,7 +1653,7 @@ var systemClasses = [
     runBackgroundOptions = function (options) {
 
         var color_array = [
-            "white 0%", "#0000e8 100%"
+            "white 0%", "black 100%"
 
         ];
 
@@ -1910,12 +1926,10 @@ var systemClasses = [
 
     runEditPanel = function () {
 
-        $("#design_setting").find("input,select").on("change", function () {
-            saveCache();
-        });
+
         $("body").on("click", ".replacable-panel > ul.pages-list li", function () {
             var MyContainerDiv = "#print-mode";
-            $(MyContainerDiv).animate({scrollTop: $(MyContainerDiv).scrollTop() + ($(".a4-page:nth-child(" + ($(this).index() + 1) + ")").offset().top - 105)});
+            $(MyContainerDiv).animate({scrollTop: $(MyContainerDiv).scrollTop() + ($(".a4-page:nth-child(" + ($(this).index()+2) + ")").offset().top - 105)});
         });
 
         $('ul[role="tablist"] a').click(function (e) {
@@ -2001,7 +2015,7 @@ var systemClasses = [
                     setDropdownFields();
 
                 }
-                saveCache();
+
                 renderConditions();
             });
 
@@ -2375,7 +2389,7 @@ var systemClasses = [
         $("#page_size select").on("change", function () {
             if (clicked == 0) return;
 
-            clicked.attr("page-size", this.options[this.selectedIndex].text);
+            clicked.attr("page-size", this.value);
         });
         $("#page_orientation select").on("change", function () {
             if (clicked == 0) return;
@@ -2401,6 +2415,8 @@ var systemClasses = [
         $("#form_input_type select").on("change", function () {
 
             var $getInput = clicked.find("input");
+            $getInput.attr("type",this.value);
+/*
             var $getCurrentValue = "";
             if ($getInput.hasAttr("data-validation")) {
                 $getCurrentValue = $getInput.attr("data-validation");
@@ -2420,7 +2436,7 @@ var systemClasses = [
             if (this.value === "number") {
 
                 if ($getClass === "number") {
-
+                    $getInput.attr("type", "homephone");
                 } else if ($getClass === "homenumber") {
                     $getInput.attr("data-validation-optional-if-answered", "homephone");
                 } else if ($getClass === "worknumber") {
@@ -2459,6 +2475,7 @@ var systemClasses = [
                     clicked.find(".prop-target").eq(0).attr("onchange", $oninput.replace("calculate();", ""));
                 }
             }
+*/
             clicked.filterPanel();
         });
 

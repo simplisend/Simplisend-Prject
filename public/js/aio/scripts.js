@@ -21,7 +21,7 @@ var formTarget = $(".a4-page"),
 var readContent = function (event) {
         allow_edit = false;
         clicked = $(event.target);
-
+        saveCache();
         if (clicked.hasAttr("class")) {
             if (!clicked.hasClass("element-editable") && !clicked.attr("class").includes("select")) {
                 if(clicked.hasClass("page-break") && !clicked.hasClass("row")){

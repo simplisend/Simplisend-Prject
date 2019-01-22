@@ -1,20 +1,23 @@
+@import url('../css/IE.css');
+
 @import url('../js/plugins/bootstrap/dist/css/bootstrap.min.css');
-@import url('../vendors/font-awesome/css/font-awesome.min.css');
+/*@import url('../vendors/font-awesome/css/font-awesome.min.css');*/
 @import url('../vendors/nprogress/nprogress.css');
 @import url('../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css');
-@import url('../vendors/colorpicker/css/colorpicker.css');
-@import url('../vendors/bootstrap-daterangepicker/daterangepicker.css');
+/*@import url('../vendors/colorpicker/css/colorpicker.css');*/
+/*@import url('../vendors/bootstrap-daterangepicker/daterangepicker.css');*/
 @import url('../vendors/normalize-css/normalize.css');
-@import url('../vendors/ion.rangeSlider/css/ion.rangeSlider.css');
-@import url('../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css');
+/*@import url('../vendors/ion.rangeSlider/css/ion.rangeSlider.css');*/
+/*@import url('../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css');*/
 
 @import url('../js/plugins/pnotify/dist/pnotify.buttons.css');
 @import url('../js/plugins/pnotify/dist/pnotify.nonblock.css');
 @import url('../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css');
-@import url('../vendors/animate.css/animate.css');
-@import url('../css/old/custom.css');
+/*@import url('../vendors/animate.css/animate.css');*/
+/*@import url('../css/old/custom.css');*/
 @import url('../build/css/custom.min.css');
 @import url('../css/PanelsStyles.css');
+
 
 @import url('../css/panel-public.css');
 @import url('../css/panel-advance.css');

@@ -13,6 +13,8 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset("js/plugins/bootstrap/dist/css/bootstrap.min.css") }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset("vendors/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
 
     <!-- Animation -->
     <link href="{{ asset("vendors/animate.css/animate.css") }}" rel="stylesheet">
@@ -32,6 +34,8 @@
 
         <!-- Ion.RangeSlider -->
         <link href="{{ asset("vendors/normalize-css/normalize.css") }}" rel="stylesheet">
+        <link href="{{ asset("vendors/ion.rangeSlider/css/ion.rangeSlider.css") }}" rel="stylesheet">
+        <link href="{{ asset("vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css") }}" rel="stylesheet">
 
         <!-- jQuery custom content scroller -->
         <link href="{{ asset("vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css") }}"
@@ -239,7 +243,8 @@
     @yield('jquery')
     <!-- Bootstrap -->
     <script src="{{ asset("js/plugins/bootstrap/dist/js/bootstrap.min.js") }}"></script>
-
+    <!-- FastClick -->
+    <script src="{{ asset("vendors/fastclick/lib/fastclick.js") }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset("build/js/custom.min.js") }}"></script>
 
@@ -257,7 +262,8 @@
         <script src="{{ asset("vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js") }}"></script>
         <!-- PNotify -->
         <script src="{{ asset("vendors/pnotify/dist/pnotify.js") }}"></script>
-
+        <!-- jQuery Knob -->
+        <script src="{{ asset("vendors/jquery-knob/dist/jquery.knob.min.js") }}"></script>
         <!-- Bootstrap Colorpicker -->
         <script src="{{ asset("js/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js") }}"></script>
     @stop

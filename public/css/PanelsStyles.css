@@ -306,7 +306,7 @@ form .selected-element {
 }
 
 .page-break {
-    height: 30px;
+    /*height: 30px;*/
     background-color: inherit;
 }
 
