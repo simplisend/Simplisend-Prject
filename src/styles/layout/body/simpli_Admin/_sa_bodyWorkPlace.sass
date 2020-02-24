@@ -1,0 +1,146 @@
+.App
+  #bodyContainer
+    .sa_WP-Container
+      background: $color-cream-a
+      .admin-body-wrapper
+        width: 100%
+        height: 100%
+        min-width: 38rem
+        display: flex
+        flex-direction: column
+        @include sa_Cat_and_form_tree()
+        .sa-row
+          display: flex
+          width: 100%
+          height: 50%
+          .sa-top-row,
+          .sa-bottom-row
+            display: flex
+            justify-content: space-around
+          .sa-forms, .sa-forms-props
+            width: 70%
+            min-width: 20rem
+            padding: 0 .5rem
+          .sa-cats, .sa-cats-props
+            width: 30%
+            padding-left: .5rem
+          
+          .title
+            width: 100%
+          .container
+            height: 100%
+            width: 100%
+            padding: 0 .5rem
+            .title_translator
+              @include title($color-blue-a, $color-white)
+              font-size: 1.6rem
+              .sa-layoutToggler
+                @include resize_toggler(#fff, $color-blue-a)
+            .translator-row
+              display: flex
+              width: 100%
+              height: calc(100% - 5rem)
+          
+              .translation-tool
+                width: 50%
+                height: 100%
+                &:first-child
+                  margin-right: .5rem
+                .lang-title
+                  @include title($color-gray-e, $color-black)
+                  padding-inline-start: 2rem
+                  width: calc(100% - 2.5rem)
+                  justify-content: flex-start
+                  height: 4rem  
+                  .filter-btn
+                    @include symbol-btn(2.6rem)
+                    color: $color-gray-d
+                    line-height: 100%
+                    border-radius: .5rem
+                    width: 3rem
+                    right: .5rem
+                    height: 2.8rem
+                  .active
+                    background-image: none
+                    background: rgba($color-orange, .5)
+
+                  .lang-select
+                    width: fit-content
+                    position: absolute
+                    right: .5rem
+                    height: 3rem
+                  @include dropDownSelect(8rem)
+                   
+                .tree-wrapper
+                  margin: .5rem 0 .5rem 0
+                  height: 100%
+                  width: 100%
+                  padding: 0
+                  overflow-y: auto
+                  .list-item, .active-item
+                    font-size: 1.2rem
+                    font-family: $font-Arial
+                    background: rgba($color-blue-a, 0.2)
+                    padding: 1rem
+                    margin: 1rem 0
+                    min-height: 1.5rem
+                    text-align: left
+                    p
+                      margin: 0
+                  .no-active-item
+                    height: 100% 
+                    font-size: 1.4rem
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    font-weight: bold
+                    color: $color-gray-a
+                  
+
+                  .active-item
+                    .input-wrapper
+                      display: flex
+                      .input-field
+                        width: 100%
+                        font-size: 1.2rem
+                        font-family: $font-Arial
+                        height: auto
+                        border: none
+                        padding: 0 .5rem
+                        resize: none
+                        
+                  
+
+                  
+        
+.sa-layout-1
+  #bodyContainer
+    .sa_WP-Container
+      .admin-body-wrapper
+        flex-direction: row
+        .sa-row
+          width: calc(80% - .1rem)
+          height: 100%
+          flex-direction: column
+          padding: 0 .5rem
+          &:first-child
+            width: 20%
+            padding: 0
+            min-width: 20rem
+            
+          .sa-forms, .sa-cats
+            min-width: 20rem
+            height: 50%
+            width: 100%
+
+          .sa-forms-props
+            min-width: calc(100% - 20rem)
+            width: calc(100% - .5rem)
+            height: 100%
+            min-width: 20rem
+            padding: 0 .5rem
+          
+          .sa-cats-props
+            display: none
+          
+          

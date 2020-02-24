@@ -1,0 +1,106 @@
+@media screen and (min-width: 650px)
+  .ss-layout-0, .sa-layout-0
+    #headerContainer
+      #ss_logo-header
+        width: 17.8rem
+      #ss_tag-Container
+        width: calc(100% - 28rem)
+        left: 19.8rem
+  .ss-layout-1, .sa-layout-1
+    #headerContainer
+      #ss_logo-header
+        width: 3rem
+        height: 3rem
+        margin: .5rem 1rem
+        &:before
+          content: "S"
+          position: absolute
+          left: 0
+          display: inline-flex
+          font-weight: 700
+          color: #fff
+          margin: 
+          font-size: 3rem
+          font-family: $font-logo
+       
+        &:after
+          content: " "
+          background: url("./../SVG/logo.svg") no-repeat
+          background-size:  
+          width: 2.5rem
+          position: absolute
+          display: inline-flex
+          height: 2.5rem
+          left: 1.5rem
+          margin: .4rem 0
+          
+          
+        #logo_div
+          display: none
+    
+      #ss_tag-Container
+        width: calc(100% - 13rem)
+        left: 5rem
+  .sa-layout-1
+    #headerContainer
+      #ss_logo-header
+        &:before
+          content: "A" 
+
+@media screen and (max-width: 649px)
+  .ss-layout-0, .sa-layout-0
+    #headerContainer
+      #ss_logo-header
+        width: 3rem
+        height: 3rem
+        margin: .5rem 1rem
+        &:before
+          content: " "
+          background: url("./../SVG/logo.svg") no-repeat
+          background-size:  
+          width: 2.5rem
+          position: absolute
+          display: inline-flex
+          height: 2.5rem
+          left: 1.5rem
+          margin: .4rem 0
+        
+        &:after
+          content: "S"
+          position: absolute
+          left: 0
+          display: inline-flex
+          font-weight: 700
+          color: #fff
+          margin: 
+          font-size: 3rem
+          font-family: $font-logo
+        #logo_div
+          display: none
+    
+      #ss_tag-Container
+        width: calc(100% - 13rem)
+        left: 5rem
+  .sa-layout-0
+    #headerContainer
+      #ss_logo-header
+        &:after
+          content: "A"
+
+    
+  .ss-layout-1, .sa-layout-1
+    #headerContainer
+      #ss_logo-header
+        width: 17.8rem
+      #ss_tag-Container
+        width: calc(100% - 28rem)
+        left: 19.8rem
+    
+
+ 
+
+
+
+
+
+

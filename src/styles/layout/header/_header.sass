@@ -1,0 +1,51 @@
+
+.App
+  #headerContainer
+    @include flexbox
+    position: fixed
+    z-index: 0
+    left: 0rem
+    top: 0rem
+    width: 100%
+    height: 4rem
+    background: $color-blue-b
+    #sb_logo-header, #ss_logo-header
+      top: 0
+      height: calc(100% - 1rem)
+      position: relative
+      display: inline-block
+      margin: .5rem 1rem 
+      @include logo-Link(2.4rem)
+      #logo_div
+        align-items: center
+        position: relative
+        display: inline-block
+        width: auto
+        line-height: 100%
+        color: $color-cream
+        .simpli-logo
+          svg 
+            #svg_4
+              stroke: $color-white
+    #sb_tag-Container, #ss_tag-Container
+      position: absolute
+      display: inline-block
+      height: 100%
+      width: auto
+    .language-nav , .menue-nav
+      position: absolute
+      display: inline-block
+      height: calc(100% - 1.2rem)
+      margin-top: 1.2rem 
+    .language-nav 
+      right: 4rem
+      @include dropDown(4rem, -1.2rem)
+    .menue-nav
+      right: 1rem
+      @include dropDown(2.4rem, -.2rem)
+    
+ 
+ 
+
+
+

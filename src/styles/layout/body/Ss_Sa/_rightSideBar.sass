@@ -1,0 +1,48 @@
+.App
+  #bodyContainer
+    .ss_Right_sideBarContainer, .sa_Right_sideBarContainer
+      height: calc(100% - .5rem)
+      box-shadow: none
+      float: right
+      background: $color-cream-a
+      width: 4rem
+      padding: .5rem 1rem 0 1rem
+      user-select: none
+      #ss-right-sidebar, #sa-right-sidebar
+        .btn_wrapper
+          position: relative
+          @include flexbox
+          @include justify-content-center
+          .ss-right-sidebar-button,  .sa-right-sidebar-button
+            @include button($color-blue-a)
+            width: 4rem
+            border-radius: 2.5rem
+            margin: .5rem 0rem
+            z-index: 10
+            svg
+              width: 2rem
+              height: 2rem
+              fill: $color-white
+          .active_1
+            position: absolute
+            @include flexbox
+            top: .5rem
+            right: 2rem
+            height: 6rem
+            width: 3.2rem
+            background: url("./../SVG/btn-extention_1.svg") no-repeat
+            
+          .active_2 
+            position: absolute
+            @include flexbox
+            top: -1rem
+            right: 2rem
+            height: 6.9rem
+            width: 3.1rem
+            background: url("./../SVG/btn-extention_2.svg") no-repeat
+        .right-sidebar-title
+          width:  100%
+          text-align: center
+          font-weight: bold
+          color: $color-gray-d
+    

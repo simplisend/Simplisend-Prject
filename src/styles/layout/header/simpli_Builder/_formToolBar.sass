@@ -1,0 +1,185 @@
+/* Group Position
+.App
+  #bodyContainer
+    #headerToolBarContainer
+      #toolBarWrapper
+        #new_open_save_group /* Button New, Open, Save, Save as group*/
+          width: 7.6rem 
+          #btn-New
+            top: 0rem
+            width: 5rem
+            height: 4rem
+            svg
+              width: 2.8rem
+              height: 2.8rem
+          #btn-NewText
+            @include title_text(5rem)
+            top: 4.2rem
+            font-size: 1.2rem
+          #btn-Open
+            top: .5rem
+            left: 5rem
+          #btn-Save
+            top: 2.3rem
+            left: 5rem
+          #btn-Save_as
+            bottom: .5rem
+            left: 5rem
+        #undo_redo_group    /* Button History group*/
+          width: 7.6rem 
+          #btn-Undo
+            top: 2rem
+            width: 3rem
+          #btn-UndoText
+            top: 2.3rem
+            left: 2.8rem
+          #btn-Redo
+            top: 4rem
+            width: 3rem
+          #btn-RedoText
+            top: 4.3rem
+            left: 2.8rem
+        #select_edit_group /* Button Select / Edit group*/
+          width: 9.3rem
+          #btn-Select
+            top: 2rem
+            left: 1rem
+          #btn-Move
+            top: 2rem
+            left: 3.8rem
+          #btn-Divide
+            top: 2rem
+            left: 6.6rem
+          #btn-SaveElement
+            top: 4.2rem
+            left: 1rem
+          #btn-Duplicate
+            top: 4.2rem
+            left: 3.8rem
+          #btn-Delete
+            top: 4.2rem
+            left: 6.6rem
+        #properties_group    /* Button Properties group */
+          width: 9.3rem
+          #buttonHide
+            top: 2rem
+            left: 1rem
+          #btn-ReadOnly
+            top: 2rem
+            left: 3.8rem
+          #btn-Title
+            top: 2rem
+            left: 6.6rem
+          #btn-Requierd
+            top: 4.2rem
+            left: 1rem
+          #btn-Unprintable
+            top: 4.2rem
+            left: 3.8rem
+          #btn-Clone
+            top: 4.2rem
+            left: 6.6rem
+        #form_name_group
+          #nameInput
+            top: 2.4rem
+            font-family: $font-Arial
+            font-size: 1.4rem
+            color: $color-black
+            position: absolute
+            cursor: text
+            border: .1rem
+            background-color: $color-white
+            border-style: solid
+            border-color: $color-gray
+            height: 2.6rem
+            margin: 0 1rem 0 1rem
+            width: calc(100% - 4.2rem)
+            padding: 0 1rem 0 1rem
+        #element_builder_group
+          width: 21rem
+          #btn-Form_Nav
+            left: 1rem
+          #btn-Form_Nav_Text
+            @include title_text(5rem)
+            left: .5rem
+          #btn-Paper_Nav
+            left: 6rem
+          #btn-Paper_Nav_Text
+            @include title_text(5rem)
+            left: 5.5rem
+          #btn-PopUp_Nav
+            right: 6rem
+          #btn-PopUp_Nav_Text
+            @include title_text(5rem)
+            right: 5.5rem
+          #btn-Filter_Nav
+            right: 1rem
+          #btn-Filter_Nav_Text
+            @include title_text(5rem)
+            right: .5rem
+        #preview_group
+          width: 30.6rem
+          #btn-Form_Preview
+            padding: 0
+            top: 1.5rem
+            left: 1rem
+          #btn-Print_Preview
+            padding: 0
+            top: 4rem
+            left: 1rem
+          #desktopIcon
+            left: 8rem
+          #mobileIcon
+            left: 27rem
+          #sliderTrack
+            position: relative
+            height: .8rem
+            width: 14rem
+            left: 11.5rem
+            top: 3.4rem
+            border-radius: .5rem
+            background: $color-gray-a
+          #slider
+            -webkit-appearance: none
+            position: absolute
+            top: 3rem
+            width: 14rem
+            left: 11.5rem
+            background: transparent
+            -webkit-transition: 0.2s
+            transition: opacity 0.2s
+            border: none
+            outline: none
+            padding: 0rem
+            margin: 0rem
+            &::-webkit-slider-thumb
+              -webkit-appearance: none
+              width: 1.5rem
+              height: 1.5rem
+              background: $color-blue-a
+              border-radius: 50%
+              cursor: pointer
+              &:hover
+                background: $color-orange
+            &::-moz-range-thumb
+              width: 1.5rem
+              height: 1.5rem
+              background: $color-blue-a
+              border-radius: 50%
+              border: none
+              cursor: pointer
+              &:hover
+                background: $color-orange
+            &::-ms-thumb
+              width: 1.5rem
+              height: 1.5rem
+              background: $color-blue-a
+              border-radius: 50%
+              border: none
+              cursor: pointer
+              margin-bottom: .5rem
+              &:hover
+                background: $color-orange
+            &::-moz-range-track
+              background:  transparent
+

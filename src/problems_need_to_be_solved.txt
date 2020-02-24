@@ -1,0 +1,27 @@
+- draggables in workplace in formBuilder are not smooth
+
+-To install backend on Desktop
+
+git clone URL (simpli_backend)
+cd simpli_backend
+virtualenv env
+cd env
+cd Scripts
+activate
+cd..
+cd..
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py shell_plus
+python manage.py runserver
+
+
+cd env
+cd Scripts
+activate
+cd..
+cd..
+git pull origin master
+python manage.py runserver

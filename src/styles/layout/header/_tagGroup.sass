@@ -1,0 +1,40 @@
+
+.App
+  #headerContainer
+    #sb_tag-Container, #ss_tag-Container
+      #tagGroup
+        height: 100%
+        .ss_tag, .sa_tag
+        #ss-header-add-button
+          @include button($color-blue-a)
+          display: inline-block
+          font-family: $font-logo
+          position: relative
+          height: 2rem
+          width: 4rem
+          top: 1.5rem
+          padding: .3rem 0
+          border-radius: 0 5rem 0 5rem
+          filter: drop-shadow( 0.1rem 0rem 0rem $color-gray-a)
+          svg
+            width: 1.4rem
+            height: 1.4rem
+            fill: $color-cream
+        #btn-TagForm, #btn-TagMain
+          left: 0rem
+        #btn-TagElement
+          left: -1rem
+        #btn-TagStyle
+          left: -2rem
+        .tag
+          top: 1.5rem
+          filter: drop-shadow( 0.1rem 0rem 0rem $color-gray-a)
+          @include btn-Tag(17rem, inline-block)
+    #sb_tag-Container
+      #tagGroup
+        .active
+          @include active($color-cream, 0)
+     
+    
+     
+    

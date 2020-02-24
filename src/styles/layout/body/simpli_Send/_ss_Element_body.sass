@@ -1,0 +1,117 @@
+.App
+  #bodyContainer
+    .ss_WP-Container
+      .element-container
+        position: relative
+        display: block
+        height: calc(100% - 27rem)
+        overflow-y: auto
+        overflow-x: hidden
+        
+        .block-container 
+          background: $color-cream-a
+          color: $color-gray-d
+          border-radius: 1rem
+          min-height: 4rem
+          margin: 1rem 0
+          padding: .5rem 1rem
+          justify-content: center
+          display: block
+          width: calc(100% - 2rem)
+          &:hover
+            background: #ecf6ff
+          
+          .short-text-input, #shorttext-question, .text-block, .dropdown-question, #btn-description, .header-block
+            @include ask-title(1.6rem)
+            position: relative
+            display: block
+            width: calc(100% - 2rem)
+            height: fit-content
+          #shorttext-question, .dropdown-question
+            width: calc(100% - 5rem)
+            flex-direction: row
+            display: inline-block
+            margin: 1rem 0 1rem 1rem
+          canvas
+            background: #fff
+            position: relative
+            display: block
+            width: calc(100% - 2rem)
+            margin: 1rem
+            height: 15rem
+            border-radius: 2rem
+            cursor: pointer
+               
+
+
+          #btn-description, #signature-btn
+            @include button($color-blue-a)
+            border-radius: 50%
+            display: inline-flex
+            width: 2rem
+            height: 2rem
+            &:hover
+              background: rgba($color-orange, .6)
+              color: black
+          #signature-btn
+            border-radius: 1rem
+            display: flex
+            width: 6rem
+            height: 3rem
+            margin: auto
+          
+          .text-block
+            font-size: 1.3rem
+            line-height: 150%
+          .header-block
+            text-align: center
+            
+         
+          .block-element-row, .dropdown-Block
+            position: relative
+            display: inline-block
+            height: auto
+            padding: 0 
+            margin: 0
+            .img
+              position: relative
+              display: flex
+              margin: 1rem auto
+
+            .dropdown
+              @include dropDownSelect(100%)
+              position: relative
+              display: inline-block
+              width: calc(100% - 2rem)
+              margin: 0 1rem
+            .answer-tag, .check-answer-tag
+              @include ask-title(1.4rem)
+              position: relative
+              display: inline-block
+              margin: 0 1rem
+              width: calc(100% - 2rem)
+              p
+                margin: 0
+            .check-answer-tag
+              width: calc(100% - 4rem)
+              margin: 0
+            .radio-Check             
+              margin: 1rem
+              align-content: center
+              display: inline-flex
+            .answer-input,
+              @include ask-title(1.4rem)
+              position: relative
+              align-self: center
+              display: block
+              border-radius: 6px
+              border: solid 1px #ddd
+              width: calc(100% - 4.2rem)
+              padding: 1rem
+              height: auto
+              resize: none
+                
+            
+              
+              
+              

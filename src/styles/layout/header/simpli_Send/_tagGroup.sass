@@ -1,0 +1,28 @@
+.App
+  #headerContainer
+    #ss_tag-Container
+      #tagGroup
+        min-width: 25rem
+        .ss_tag, closeBtn, .sa_tag
+          top: 1.5rem
+          filter: drop-shadow( 0.1rem 0rem 0rem $color-gray-a)
+          @include btn-Tag(17rem, inline-block)
+          width: auto
+          padding: 0 3rem 0 3rem
+          position: relative
+        
+        .active
+          @include active(white, 0)
+        .closeBtn
+          top: 1.2rem
+          position: relative
+          display: inline-block
+          margin: auto
+          font-family: $font-Arial
+          font-weight: bold
+          font-size: 1.4rem
+          z-index: 100
+          cursor: pointer
+          color: $color-blue-b
+          &:hover
+            color: $color-orange

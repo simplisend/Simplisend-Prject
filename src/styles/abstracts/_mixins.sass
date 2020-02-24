@@ -1,0 +1,1147 @@
+
+@mixin sideBarContainer($width, $background)
+  width: $width
+  display: inline-block
+  background: $background
+
+@mixin discription-text()
+  font-weight: 200
+  left: 0rem
+  line-height: 100%
+  border-radius: .5rem
+  background: $color-cream-a
+  color: $color-blue-a
+  width: auto
+  padding: .5rem
+  margin: 0
+  bottom: 2.5rem
+  display: block
+  height: fit-content
+  position: absolute
+  font-family: $font-Arial
+  padding: .6rem
+  z-index: 10
+  font-size: 1.1rem
+  border: .05rem solid $color-blue-a
+@mixin sideBarTitle($background)
+  position: relative
+  cursor: default
+  display: inline-block
+  width: 100%
+  height: 3.5rem
+  color: $color-cream
+  background: $background
+  font-family: $font-Arial
+  line-height: 220%
+  font-size: 1.6rem
+  border: none
+  text-align: center
+  outline: none
+  user-select: none
+
+@mixin sidebarButton
+  display:  flex
+  color: $color-cream
+  background: $color-blue-a
+  position: relative
+  cursor: pointer
+  width: calc(100% - 2rem)
+  height: 3.4rem
+  border-radius: 2.5rem
+  margin:  .6rem 0.4rem .6rem 0.4rem
+  padding: 0rem .6rem 0 .6rem
+  border: none
+  outline: none
+  &:hover
+   color: $color-black
+   background: $color-orange
+  .symbol-btn_4
+    display:  flex
+    align-items: center
+    @include justify-content-center
+    fill: $color-gray-c
+    background: $color-cream
+    float: left
+    width: 3.8rem
+    height: 3rem
+    outline: none
+    margin: .2rem
+    border-radius: 2rem 0rem 2rem 0rem
+    user-select: none
+    svg
+      width: 2rem
+      height: 2rem
+      #svg_1
+        stroke: $color-gray-c
+
+
+  .btn-Text
+    display:  flex
+    align-items: center
+    @include justify-content-center
+    margin-left: .4rem
+    font-family: $font-Arial
+    position: relative
+    line-hight: 100%
+    font-size: 1.4rem
+    user-select: none
+
+
+ 
+    
+@mixin title($color, $color-1)
+  background: $color
+  font-family: $font-Arial
+  border: none
+  height: 3rem
+  width: calc(100% - 1rem)
+  color:  $color-1
+  border-radius: .6rem
+  @include flexbox
+  align-items: center
+  @include justify-content-center
+  outline: none
+  user-select: none
+  margin: 0.5rem 0 0 0
+  padding: .5rem
+
+@mixin ask-title($font-size)
+  position: relative
+  font-family: $font-Arial
+  font-size: $font-size
+  height: auto
+  outline: none
+  user-select: none
+  width: calc(100% - 2rem)
+  font-weight: bold
+  text-align: left
+  justify-item: center
+  padding: 0
+  margin: 1rem
+@mixin dropDownSelect($width)
+  [class*="-container"]
+    
+    [class*="-menu"]
+      text-transform: capitalize 
+      width: 100%
+      @include animation (fade-in,"", .5s, ease, both )
+      z-index: 1000
+      div
+        width: 100%
+        max-height: 15rem
+
+
+
+    [class*="-control"]
+      background: $color-cream-a
+      min-height: 2rem
+      text-transform: capitalize
+      width: $width 
+      height: 100%
+      background: #fff
+      
+      .css-1hwfws3 
+        height: 100%
+        padding: 0.5rem 
+        height: fit-content
+        display: flex
+        align-items: center
+        align-content: center
+        width: 3rem
+        
+
+        [class*="-singleValue"]
+          display: flexbox
+          align-self: center
+          text-transform: capitalize 
+          max-width: 100%
+          margin: 0 .5rem
+          word-break: 
+      .css-1wy0on6
+        
+        height: 100%
+        width: fit-content
+        align-content: center
+        [class*="-indicatorSeparator"]
+          height: 1.5rem
+        [class*="-indicatorContainer"]
+          width: fit-content
+          cursor: pointer
+          position: relative
+          padding: 0.5rem
+
+@mixin ss_rightsidebar_content-wrapper($radius)
+  height: calc(100% - 4rem)
+  width:  calc(100% - 4rem)
+  min-height: 40rem
+  min-width: 40rem
+  z-index: 100
+  right: 0
+  top: 0
+  margin: 1rem 0
+  position: absolute
+  background: $color-blue-a
+  border-radius: 1.5rem $radius 1.5rem 1.5rem
+  @include flexbox
+  overflow: auto
+  align-items: center
+  @include justify-content-space-around
+  padding: 1rem 2rem
+  color: $color-white
+  font-size: 1.4rem
+  user-select: none
+  outline: none
+  box-shadow: -.2rem .2rem .5rem $color-gray-a
+  @include animation (sweep-in-left,"", .8s, ease, both )
+
+  .label
+    height: 2.3rem
+    width: 100%
+
+  .form-input, .input-wrapper
+    min-height: 2.5rem
+    padding: .5rem 1rem
+    border: none
+    border-radius: .5rem
+    margin: .5rem 0
+    width: calc(100% - 2rem)
+  .input-wrapper 
+    align-content: center
+    @include justify-content-center
+    @include flexbox
+    .form-button
+      cursor: pointer
+      padding: 1rem 2rem
+      min-width: 8rem
+      margin: .5rem
+      color: $color-blue-a
+      border: none
+      border-radius: 2rem
+      background: $color-white
+      font-weight: bold
+      &:hover
+        transform: scale(1.05)
+        background: $color-orange
+        color: $color-gray-d
+    .radio-label
+      margin: auto
+      font-weight: bold
+      width: 6rem
+      padding: 0
+    .date-input
+      @include dropDownSelect(100%)
+      margin: auto
+      width: 7rem
+      &:last-child
+        width: 12rem
+    
+
+
+    .column
+      @include flexbox
+      @include  flex-direction-colomn
+      position: relative
+      overflow-y: auto
+      max-height: 100%
+      min-width: 10rem
+      max-width: 100%
+      &:not(:first-child)
+        width: calc(100% - 12rem)
+
+      .mail-button, .mail-details
+        cursor: pointer
+        @include flexbox
+        text-align: center
+        @include justify-content-center
+        height: 4rem
+        width: auto
+        border: none
+        background: $color-cream-a
+        padding: .5rem
+        margin-bottom: 5px
+        font-weight: bold
+        color: $color-gray-d
+      .mail-button
+        &:hover
+          background: $color-orange
+          
+      .mail-details
+        cursor: default
+        justify-content: left
+        height: 100%
+        margin-bottom: 0
+      .mail-item
+        @include flexbox
+        margin: 0rem 1rem 0rem 1rem
+        width: auto
+        min-height: 6rem
+        height: auto
+        &:not(:first-child)
+          margin-top: 1rem
+        .item-logo
+          min-width: 7rem
+        .option-item , .item-info, .item-text, .item-logo
+          padding: .5rem
+          display: table-cell
+          @include justify-content-center
+          font-weight: bold
+          color: $color-gray-d
+          background: $color-cream-a
+          &:not(:last-child)
+            border-right: .2rem solid $color-blue-a
+        
+        .option-item , .item-info,
+
+          .info-text
+            border: none
+            margin: .5rem 0
+            display: block
+            width: 12rem
+            height: auto
+          .option-button
+            cursor: pointer
+            @extend .info-text
+            width: 3rem
+            min-height: 2.8rem
+            fill: $color-blue-a
+            margin: 0
+            background: none
+            
+            &:hover
+              fill: $color-orange
+
+        .item-text
+          width: 100%
+          height: auto
+          min-width: 12rem
+
+
+
+  .title-block
+    font-weight: bold
+    width: 100%
+    text-align: center
+    position: relative
+    font-size: 1.6rem
+    margin-bottom: .5rem
+
+  
+
+@mixin clearFix
+  &::after
+    content: ""
+    display: table
+    clear: both
+
+@mixin logo-Link($font-Size)
+  #logo_div
+    position: absolute
+    padding: .5rem 0rem .5rem 0rem
+    left: 0rem
+    width: 16rem
+    font-size: $font-Size 
+    font-family: $font-logo, cursive
+    color: $color-blue-a
+    font-weight: 700
+    user-select: none
+    
+    .simpli-logo, .simpli-logo-2
+      position: relative
+      svg
+        position: absolute
+        content: " "
+        width: $font-Size * .8
+        height: $font-Size * .8
+        top: $font-Size *.1
+        #svg_4
+          stroke: $color-blue-a
+    .simpli-logo-2
+      font-family: $font-Arial
+      font-weight: 200
+      svg
+        width: $font-Size 
+        height: $font-Size 
+    .simpli-logo
+      &:before
+        content: "S"
+        color: $color-orange
+        font-size: $font-Size 
+    .logo-domain
+      position: relative
+      text-transform: capitalize
+      left:  $font-Size * .9
+      
+      
+
+@mixin btn-Tag($w-Value, $display-Value)
+    position: relative
+    cursor: pointer
+    width: $w-Value
+    height: 2.5rem
+    color: $color-cream
+    background: $color-blue-a
+    font-family: $font-Arial
+    line-height: 100%
+    font-size: 1.4rem
+    border: none
+    text-align: center
+    border-radius: 2.5rem 2.5rem 0 0
+    outline: none
+    user-select: none
+    display: $display-Value
+
+    &:hover
+      background: $color-orange
+      color: $color-black
+      z-index: 2
+
+@mixin active($bG-Value, $z-Value)
+    color: $color-black
+    fill: $color-black
+    border: none
+    background-color: $bG-Value
+    background-image: none
+    z-index: $z-Value
+
+@mixin symbol-btn($fS-Value)
+    fill: $color-gray-c
+    line-height: 0%
+    padding: 0rem
+    outline: none
+    cursor: pointer
+    position: absolute
+    border-width: 0.05rem
+    border-color: $color-gray
+    border-style: solid
+    background-color: transparent
+    background-image: linear-gradient(to top, #e0dede 0%, #ffffff 100%)
+    svg
+      width: $fS-Value
+      height: $fS-Value
+    border-radius: .5rem
+    &:hover
+      border-color: $color-gray-c
+      border-width: .1rem
+
+@mixin details-btn()
+  display: flex
+  position: absolute
+  top: 0
+  cursor: pointer
+  justify-content: center
+  text-align: center
+  flex-direction: column
+  line-height: 100% 
+  background: rgba($color-blue-a, .8)
+  fill: $color-cream-a
+  width: 100%
+  height: 100%
+  &:hover
+    background: rgba($color-orange, .8)
+    fill: $color-gray-d
+
+
+
+@mixin title_text($width)
+    top: 5rem
+    width: $width
+    font-size: 1rem
+    text-align: center
+
+@mixin dropDown($width, $right)
+    .warpper
+      min-height: 2.5rem
+      margin: 0
+      padding: 0
+      list-style: none
+      position: relative
+      @include flexbox
+      width: $width
+      background: transparent
+      user-select: none
+
+      .dropped_wrapper
+        cursor: pointer
+        min-height: 3rem
+        width: 100%
+        z-index: 100
+
+
+
+
+      .dropped_list
+        display: none
+        position: absolute
+        top: 3rem
+        right: $right
+        background: #fff
+        min-width: 9rem
+        width: auto
+        padding: 1rem .5rem .5rem .5rem
+        border-radius: .5rem
+        box-shadow: 0 0 2rem rgba(0,0,0,0.2)
+        transition-property: height
+        transition-duration: 5s
+        #title //menue dropdown
+          font-size: 1.6rem
+          background: transparent
+          line-height: 150%
+          cursor: auto
+          color: $color-gray-d
+          text-align: center
+          height: 3rem
+          box-shadow: 0 0 .5rem $color-gray-a
+          margin-bottom: .5rem
+          &:hover, &:active
+            color: $color-gray-d
+
+
+      &:hover .dropped_list
+        display: block
+
+
+      
+      .list
+        position: relative
+        margin-bottom: .2rem
+        min-height: 2.4rem
+        padding-left: .5rem
+        z-index: 2
+        font-size: 1.4rem
+        list-style: none
+        background: $color-cream
+        color: black
+        line-height: 50%
+        @include logo-Link(1.6rem)
+        #logo_div
+        &:hover, &:active
+          color: #fff
+          background: $color-blue-a
+          .simpli-logo, #logo_div
+            color: #fff
+          .logoFirstLetter
+            color: $color-orange
+
+        .item
+          position: relative
+          #simplisend, #simpliadmin, #simplibuilder
+            position: relative
+            min-width: 15.7rem
+            width: auto
+
+    .dropLogo
+      position: absolute
+      width: $width
+      color: white
+      margin: 0
+      padding: 0
+      text-align-last: right
+      text-align: right
+      font-size: 1.6rem
+      top: 0rem
+      user-select: none
+      line-height: 100%
+      
+    .dropMenue
+      font-size: 3rem
+      padding: .2rem
+      height: 3rem
+      width: 3rem
+      svg
+        width: 2rem
+        height: 2rem
+        fill: white
+
+
+
+
+@mixin footer($color)
+  bottom: 0rem
+  position: absolute
+  @include flexbox
+  width: 100%
+  height: 4.6rem
+  background: $color
+  box-shadow: 0rem -0.2rem .5rem $color-gray-a
+
+@mixin button($color)
+  background: rgba($color, 1)
+  border: none
+  height: 4rem
+  width: 5rem
+  color:  $color-white
+  border-radius: 6px
+  @include flexbox
+  align-items: center
+  @include justify-content-center
+  outline: none
+  cursor: pointer
+  user-select: none
+
+  &:active
+    background: rgba($color, .8)
+
+@mixin row-divide($w-1, $w-2, $w-3, $w-4, $w-5, $w-6)
+  .block-element-row:nth-last-child(-n + 8):first-child, :nth-last-child(-n + 8):first-child ~ *
+    width: $w-6
+  .block-element-row:nth-last-child(-n + 7):first-child, :nth-last-child(-n + 7):first-child ~ *
+    width: $w-5
+  .block-element-row:nth-last-child(-n + 6):first-child, :nth-last-child(-n + 6):first-child ~ *
+    width: $w-4
+  .block-element-row:nth-last-child(-n + 5):first-child, :nth-last-child(-n + 5):first-child ~ *
+    width: $w-3
+  .block-element-row:nth-last-child(-n + 4):first-child, :nth-last-child(-n + 4):first-child ~ *
+    width: $w-2
+  .block-element-row:nth-last-child(-n + 3):first-child, :nth-last-child(-n + 3):first-child ~ *
+    width: $w-1
+
+@mixin row-divide1($w-1, $w-2, $w-3, $w-4, $w-5, $w-6)
+  .block-element-row:nth-last-child(-n + 7):first-child, :nth-last-child(-n + 7):first-child ~ *
+    width: $w-6
+  .block-element-row:nth-last-child(-n + 6):first-child, :nth-last-child(-n + 6):first-child ~ *
+    width: $w-5
+  .block-element-row:nth-last-child(-n + 5):first-child, :nth-last-child(-n + 5):first-child ~ *
+    width: $w-4
+  .block-element-row:nth-last-child(-n + 4):first-child, :nth-last-child(-n + 4):first-child ~ *
+    width: $w-3
+  .block-element-row:nth-last-child(-n + 3):first-child, :nth-last-child(-n + 3):first-child ~ *
+    width: $w-2
+  .block-element-row:nth-last-child(-n + 2):first-child, :nth-last-child(-n + 2):first-child ~ *
+    width: $w-1
+
+
+@mixin pup_up
+  user-select: none
+  .pop-up-wrapper
+    align-content: center
+    @include justify-content-center
+    position: absolute
+    background: rgba($color-gray-a, .3)
+    margin: 0
+    .pop-up
+      display: flexbox
+      margin: auto
+      position: relative
+      width: 80%
+      max-width: 70rem
+      min-width: 30rem
+      max-height: calc(100% - 5rem)     
+      padding: 1rem
+      border-radius: 2rem
+      box-shadow: .2rem .2rem .6rem $color-gray-a
+      background: $color-cream-a
+      color: $color-gray-d
+      @include animation (scale-up-center,"", .4s, ease-in-out, both )
+     
+      .popup-header
+        font-size: 1.4rem
+        font-weight: bold
+        padding: .5rem
+        border-bottom: solid .1rem $color-gray-a
+      .popup-body
+        display: flexbox
+        flex-direction: column
+        position: relative
+        padding: .5rem
+        height: auto
+        .langList
+          position: relative
+          display: inline-flex
+          margin: .5rem .2rem
+          height: fit-content
+          padding: .5rem
+          font-size: 1.4rem
+          background: $color-cream
+          color: black
+          width: calc(100% / 3 - 1.4rem)
+          cursor: pointer
+          &:hover
+            color: #fff
+            background: $color-blue-a
+        h3
+          font-size: 1.4rem
+          margin: 1rem 0
+        .massage
+          font-size: 1.6rem
+          background: $color-white
+          height: auto
+          padding: 1rem
+          border-radius: 1rem
+        .radio-wrapper,
+          @include flexbox
+          width: auto
+        .radio-item
+          @include flexbox
+          align-items: center
+          font-size: 1.2rem
+          height: 1.5rem
+          padding: .5rem
+          .radio
+            margin: 0
+            margin-right: .5rem
+        .input-field, .input-aria
+          position: relative
+          @include flexbox
+          align-items: center
+          height: auto
+          max-height: 4rem
+          overflow-y: auto
+          width: calc(100% - 1.4rem)
+          padding: .2rem .5rem 
+          margin: auto
+          border: solid .1rem $color-gray-a
+        .input-aria
+          height: 6rem
+        .shorttext-options-conainer
+          position: absolute
+          width: calc(100% - 3rem)
+          background: $color-cream
+          border-radius: 1rem
+          height: auto
+          z-index: 1
+          padding: 0 1rem
+          max-height: 15rem
+          margin: .5rem 0
+          overflow-y: auto
+        .pop-up-button
+          display: flex
+          margin: auto
+          justify-content: center
+          @include button($color-blue-a)
+          border-radius: 2rem
+          padding: 0
+          width: 70%
+          height: 2.2rem
+          &:hover
+            background: rgba($color-orange, .6)
+            color: black
+         
+        .content-wrapper
+          display: flexbox
+          border-bottom: solid .1rem $color-gray-a
+          margin-bottom: .5rem
+          .title
+            font-size: 1.4rem
+            font-weight: bold
+            display: inline-flex
+            margin: 1rem 0 .5rem .5rem
+            width: calc(70% - 3rem)
+           
+            &:first-child
+              width: calc(30% - 3rem)
+        .input-wrapper
+          max-height: 10rem
+          overflow-y: auto
+          .input-type
+            display: flexbox
+            width: 100%
+            flex-direction: row
+            .id-Input,  .tag-Input, .tag_Input_1
+              display: inline-flex
+              margin: .5rem 0 .5rem .5rem
+              width: calc(70% - 3rem)
+              &:first-child
+                width: calc(30% - 3rem)
+              input
+                padding: .2rem .5rem
+                width: calc(100% - 1rem)
+            
+
+            [class*="-Input"]:nth-last-child(-n + 1):first-child, :nth-last-child(-n + 1):first-child ~ *
+              width: calc(100% - 1rem)
+            .tag_Input_1
+              &:first-child
+                width: calc(100% - 1rem)
+              
+           
+            .checkbox
+              position: relative
+              float: right
+              margin: .5rem 0
+              right: 0rem
+              display: inline-flex
+              width: 4rem
+              height: 2.2rem
+              input
+                height: 2.2rem
+                margin: 0
+            button
+              @include button($color-blue-a)
+              border-radius: 20%
+              padding: 0
+              width: 2.2rem
+              height: 2.2rem
+              margin-left: .5rem
+
+              &:hover
+                background: rgba($color-orange, .6)
+                color: black
+           
+            .shorttext-options-conainer
+              position: absolute
+              width: calc(100% - 3rem)
+              background: $color-cream
+              border-radius: 1rem
+              height: auto
+              z-index: 1
+              padding: 0 1rem
+              max-height: 15rem
+              margin: .5rem 0
+              overflow-y: auto
+
+      .popup-tag-link
+        display: inline-flex
+        @include logo-Link(2rem)
+        width: 50%
+        justify-content: center
+        #logo_div
+          width: 100%
+          position: relative
+          padding: 1rem
+          cursor: pointer
+        &:hover , &:active
+          #logo_div
+            color: $color-white
+            background: $color-blue-a
+        &:hover 
+          #logo_div
+            background: rgba($color-blue-a, .5)
+        
+
+      .popup-tag-link.active
+        #logo_div
+          color: $color-white
+          background: $color-blue-a
+
+      .pop-up-bottons-wrapper
+        position: relative
+        display: flex
+        @include justify-content-center
+        border-top: solid .1rem $color-gray-a
+        padding-top: 1rem
+        height: 4rem
+        @include logo-Link(2.7rem)
+        #logo_div
+          display: block
+          align-content: center
+          position: relative
+          width: fit-content
+          padding: 0
+
+  
+        #password
+          position: relative
+          display: inline-flex
+          align-self: center
+          border: solid .1rem $color-gray-a
+          width: 10rem
+          height: 3rem
+          padding: 0 .5rem
+        .pop-up-button
+          @include button($color-blue-a)
+          position: relative
+          margin: 0 .5rem
+          float: right       
+          width: fit-content
+          border-radius: .6rem
+          padding: 1rem
+          &:hover
+            background: rgba($color-orange, .6)
+            color: black
+        .error
+          padding: 0 1rem
+          font-size: 1.2rem
+          display: inline-block
+          width: fit-content
+          color: red
+
+
+@mixin tree-item-icon($color, $content, $fontsize)
+  .svg
+    fill: rgba($color, .5)
+ 
+  &:before
+    position: absolute
+    left: 1rem
+    width: 1rem
+    height: 1rem
+    top: 1.4rem
+    line-height: 100%
+    font-size: $fontsize
+    font-family: $font-Arial
+    content: $content
+    color: black
+    font-weight: bold
+
+
+@mixin resize_toggler($color, $bg-color)
+  right: 2rem
+  position: absolute
+  width: 1rem
+  height: 1rem
+  border: .1rem solid $color
+  cursor: pointer
+  &:before
+    display: flex
+    position: relative
+    content: ""
+    background: $bg-color
+    top: .2rem
+    left: -.4rem
+    width: 1rem
+    height: 1rem
+    border: .1rem solid $color
+  &:hover
+    border-color: $color-orange
+    &:before
+      border-color:  $color-orange
+@mixin sa_Cat_and_form_tree
+     
+        .list-wrapper, .translation-tool
+          position: relative
+          @include flexbox
+          @include  flex-direction-colomn
+          height: 100%
+          width: 100%        
+          user-select: none
+          .tree-title
+            @include title($color-gray-e, $color-black)
+            .sa-layoutToggler
+              @include resize_toggler($color-blue-a, $color-gray-e)
+                
+            
+          .sa-forms-list-title
+            @include title($color-blue-a, $color-white)
+          .category-Props
+            @include title($color-white, $color-black)
+            height: auto
+            .title, 
+              font-size: 1.2rem
+              display: block
+              margin: auto
+              text-align: left
+              width: 10rem
+              
+
+            .form-input, .checkbox,  
+              right: .5rem
+              width: calc(100% - 10.5rem) 
+              
+              
+            .c_picker_btn, .symbol_btn
+              width: calc(100% - 11.8rem) 
+              padding: .5rem
+              background: #fff
+              border-radius: .1rem
+              box-shadow: 0 0 0 .1rem rgba(0,0,0,.1)
+              cursor: pointer
+              position: relative
+              right: .5rem
+              .c_picker_feld, .symbol_feld
+                width: auto
+                height: 1.4rem
+                border-radius: .2rem
+            .symbol_btn
+              margin-left: calc(100% - 25.8rem) 
+              width: 15rem
+              height: 15rem
+              .symbol_feld
+                height: 15rem
+            
+          .color_picker_holder
+            position: absolute
+            z-index: 2
+            left: 100%
+            display: inline-block
+            bottom: 0
+            margin: 1rem
+            .close_div
+              position: fixed
+              top: 0
+              right: 0
+              bottom: 0
+              left: 0
+
+            
+            
+          .buttons-wrapper
+            width: 100%
+            height: auto
+            padding: .5rem 0
+            align-items: baseline
+            border-bottom: solid .1rem $color-gray-a
+            margin-bottom: .5rem
+            .discription
+              display: none
+        
+            .symbol-btn, .transparent
+              @include symbol-btn(1.5rem)
+              position: relative
+              display: flexbox
+              height: 2.2rem
+              width: 3rem
+              margin: 0 .1rem
+              svg
+                width: 1.5rem
+                height: 1.5rem
+                
+              &:first-child
+                margin-left: .2rem
+                font-weight: bold
+              &:hover
+                .discription
+                  @include discription-text
+            .transparent
+              opacity: 0.4
+
+
+          .builderTag
+            @include btn-Tag(10rem, "")
+            width: auto
+            padding: 0 3rem 0 3rem
+          .active_1
+            background: $color-white
+            color: $color-black
+
+          .forms-container
+            position: absolute
+            width: calc(100% - 1rem)
+            background: $color-white
+            padding: .5rem
+            height: calc(100% - 12rem)
+            overflow-y: auto
+            .form, .active
+              position: relative
+              width: 100%
+              height: auto
+              @include flexbox
+              color: $color-gray-d
+              align-items: center
+              cursor: pointer
+              .form-item, .s-form-item
+                width: 3rem
+                height: 3rem
+                position: relative
+                @include tree-item-icon($color-black, "F", 1.6rem)
+                &:before
+                  top: 1rem
+                  font-style: italic
+                  color: orange
+              .s-form-item
+                @include tree-item-icon($color-black, "Sf", 1.6rem)
+                &:before
+                  top: 1rem
+                  left: .5rem
+                  font-style: italic
+                  color: orange
+
+
+
+
+              .form-title, .rename
+                position: relative
+                padding-left: .5rem
+                width: calc(100% - 4.5rem)
+                @include flexbox
+                align-items: center
+                font-size: 1.4rem
+                font-family: $font-Arial
+              .rename
+                width: calc(100% - 0.5rem)
+
+            .active
+              @include active(rgba($color-blue-a, .2), 1)
+
+
+
+
+
+
+
+
+
+          .tree-wrapper
+            overflow-y: auto
+            position: relative
+            width: calc(100% - 1rem)
+            height: calc(100% - 9.5rem)
+            padding: 1rem .5rem 0 .5rem
+            background: $color-white
+            .tag, .cat, .filter, .sub-filter
+              font-size: 1.4rem
+              align-items: center
+              cursor: pointer
+
+              &:hover
+                background:  $color-cream
+                color: $color-black
+
+            .cats-list-wrapper
+              width: auto
+              height: auto
+              @include flexbox
+              position: relative
+              padding: .2rem 0
+
+              .type-icon
+                width: 3rem
+                height: 3rem
+                position: relative
+                
+              .tag
+                @include tree-item-icon(red, "T", 1rem)
+              .cat
+                @include tree-item-icon(orange, "C", 1rem)
+
+              .filter
+                @include tree-item-icon(green, "F", 1rem)
+
+              .sub-filter
+                @include tree-item-icon(purple, "S", 1rem)
+
+              .type-title
+                position: relative
+                padding-left: .5rem
+                width: 100%
+                @include flexbox
+                align-items: center
+                .private-symbol
+                  width: 1.5rem
+                  height: 1.5rem
+                  display: inline-flexbox
+                  margin: 0 1rem
+                  position: absolute
+                  fill: $color-blue-a   
+                  right: 0             
+            .cuted_item
+              opacity: 0.5
+
+
+
+          .active
+            background: rgba($color-blue-a, .3)
+          .cuted_item
+            opacity: 0.5
+
+// Responsive Browsers
+@mixin flex-direction-colomn
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+  -ms-flex-direction: column
+  flex-direction: column
+
+@mixin flexbox
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+@mixin justify-content-space-around
+  -ms-flex-pack: distribute
+  justify-content: space-around
+
+@mixin justify-content-center
+  -webkit-box-pack: center
+  -ms-flex-pack: center
+  justify-content: center

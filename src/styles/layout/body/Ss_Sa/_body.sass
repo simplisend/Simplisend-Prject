@@ -1,0 +1,49 @@
+.App
+  #bodyContainer
+    position: fixed
+    z-index: 0
+    left: 0rem
+    top: 4rem
+    width: 100%
+    height: calc(100% - 8.6rem)
+    background: $color-cream
+    box-shadow: .2rem 0rem .5rem $color-gray-a
+    @include clearFix
+    .ss_WP-Container, .sa_WP-Container
+      .right-sidebar-elements-container
+        float: right
+        .content-wrapper_1
+          @include ss_rightsidebar_content-wrapper(0)
+         
+          @include flexbox
+          flex-direction: column
+
+          .row_1
+            @include flexbox
+            flex-direction: row
+            width: 80%
+            justify-content: center
+            .column_1, .column_2
+              position: relative
+              height: fit-content
+              width: 50%
+              margin: 0
+              @include flexbox
+              @include flex-direction-colomn
+              .label
+                height: fit-content
+              .form-input
+            .column_2
+              margin-inline-start: 1rem
+          .row_end
+            width: 100%
+            height: fit-content
+            padding: 0
+            position: relative
+        .content-wrapper_2
+          @include ss_rightsidebar_content-wrapper(1.5rem)
+          @include  flex-direction-colomn
+         
+          .input-wrapper
+            min-height: 15rem 
+    

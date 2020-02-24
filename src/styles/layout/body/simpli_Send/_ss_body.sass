@@ -1,0 +1,116 @@
+.App
+  .static-page-container
+    user-select: none
+    top: 4rem
+    bottom: 4.5rem
+    
+    position: absolute
+    
+    
+    .static-page
+      position: relative
+      background: $color-cream-a
+      display: flexbox
+      border-radius: 2rem
+      padding: 2rem
+      margin: 1rem 
+      margin-bottom: 0
+      height: calc(100% - 5rem)
+      width: calc(100% - 6rem)
+      .text-contenet
+        @include animation (fade-in,"", 1s,ease , forwards )
+        position: relative
+        margin: 3rem 0
+        font-family: $font-Arial
+        color: $color-blue-a
+        padding: 1rem
+        height: calc(100% - 5rem)
+        overflow-y: auto
+        text-align: justify
+        h1
+          margin: 1rem 0        
+          font-size: 3rem
+          &:not(:first-child)
+            margin: 2.5rem 0 1rem 0
+        h2
+          margin: 2rem 0 .6rem 0
+          font-size: 2rem
+        p, li  
+          line-height: 150%        
+          margin: .5rem 0
+          color: $color-gray-d
+          font-size: 1.6rem
+        
+
+      .btn-close
+        position: relative
+        @include button($color-blue-a)
+        border-radius: 50%
+        display: inline-flex
+        width: 2rem
+        height: 2rem
+        float: right
+        &:hover
+          background: rgba($color-orange, .6)
+          color: black
+  #bodyContainer
+    .ss_WP-Container
+      float: left
+      position: absolute
+      background: #fff //url("./../SVG/logo.svg") no-repeat
+      //background-size: 20rem 
+      min-width: 25rem
+      height: 100%
+      @include flexbox
+      @include  flex-direction-colomn
+      z-index: -1
+      @include animation (fade-in,"", 1s,ease , forwards )
+      
+
+
+@media screen and (min-width: 650px)
+  .ss-layout-0, .sa-layout-0
+    #bodyContainer
+      .ss_WP-Container
+        left: 20rem
+        width: calc(100% - 25.8rem)
+        min-width: 25rem
+      .sa_WP-Container
+        width: calc(100% - 25.8rem)
+    .static-page-container
+      width: calc(100% - 26rem)
+      padding: 0 6rem 0 20rem
+  .ss-layout-1, .sa-layout-1
+    #bodyContainer
+      .ss_WP-Container
+        left: 5rem
+        width: calc(100% - 11rem)
+      .sa_WP-Container
+        width: calc(100% - 11rem)
+    .static-page-container
+      width: calc(100% - 11rem)
+      padding: 0 6rem 0 5rem
+
+@media screen and (max-width: 649px)
+  
+  .ss-layout-0, .sa-layout-0
+    #bodyContainer
+      .ss_WP-Container
+        left: 5rem
+        width: calc(100% - 11rem)
+      .sa_WP-Container
+        width: calc(100% - 11rem)
+    .static-page-container
+      width: calc(100% - 11rem)
+      padding: 0 6rem 0 5rem
+  .ss-layout-1, .sa-layout-1
+    #bodyContainer
+      .ss_WP-Container
+        left: 20rem
+        width: calc(100% - 25.8rem)
+        min-width: 25rem
+      .sa_WP-Container
+        width: calc(100% - 25.8rem)
+    .static-page-container
+      width: calc(100% - 26rem)
+      padding: 0 6rem 0 20rem

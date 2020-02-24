@@ -1,0 +1,136 @@
+.App
+  #bodyContainer
+    #workPlace
+      #wPtagGroup         
+        #formContainer
+          #wb_Container_holder
+            .wp_Element_Container
+              .workplace-droppable-item
+                color: $color-gray-d
+                min-height: 4rem
+                margin: 1rem 0
+                padding: 0 1rem
+                justify-content: center
+                display: inline-block
+                font-size: 1.4rem
+                
+                .short-text-input, p, .input-row
+                  @include ask-title(1.2rem)
+                  display: inline-flexbox
+                  margin: 0 
+                  height: fit-content
+                  min-height: 1.5rem
+                  width: calc(100% - .5rem)
+                  position: relative
+                  flex-direction: row
+                  @include dropDownSelect(100%)
+
+                  .checkBox, .input-tag, 
+                    position: relative
+                    display: inline-flex
+                    margin: 0
+                    
+                  .input-tag
+                    padding: 0 0 0 .5rem 
+                    width: calc(100% - 2rem)
+                    
+                  .checkBox
+                    width: 1.5rem
+                    height: 1.5rem
+                    top: .5rem 
+                p
+                  padding: 0 0 .5rem 0
+                  text-justify: inter-word
+                .sb-upload-btn
+                  width: 10rem
+                  border-radius: .6rem
+                  border: none
+                  padding: 1rem
+                
+                  
+                .details-btn
+                  @include details-btn()
+              .dropped_content
+                .question-container
+                  position: relative                  
+                  .header-input, .text-block, .question-input
+                    width: calc(100% - 1rem)
+                    font-size: 1.4rem
+                    font-family: $font-Arial
+                    height: auto
+                    border: none
+                    line-height: 150%
+                    padding: 0 .5rem
+                    margin: .5rem 0
+                  .header-input 
+                    text-align: center
+                    font-weight: bold
+                    font-size: 1.6rem
+                  .question-input
+                    font-weight: bold
+                  .shorttext-options-conainer
+                    position: absolute
+                    width: calc(100% - 2rem)
+                    background: $color-cream
+                    border-radius: 1rem
+                    height: auto
+                    z-index: 1
+                    padding: 0 1rem
+                    max-height: 20rem
+                    overflow-y: auto
+                   
+                    .options-list-item
+                      width: calc(100% - 2rem)
+                      display: flex
+                      padding: .5rem 1rem
+                      margin: .5rem 0
+                      height: auto
+                      font-family:  $font-Arial
+                      font-size: 1.4rem
+                      cursor: pointer
+                      &:hover
+                        background: rgba($color-orange, .5)
+
+                  .details-btn
+                    @include details-btn()
+              .img
+                border-radius: 6px
+                box-shadow: .5rem .3rem 1rem $color-gray-a
+                display: block
+                margin: auto
+              .sb-signature
+                padding: 1rem
+                text-align: center
+                font-weight: bold
+              
+              
+       
+
+
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+
+  
+
+        
+      
+
+
+  
+
+
+

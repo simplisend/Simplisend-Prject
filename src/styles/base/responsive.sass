@@ -1,0 +1,187 @@
+@media screen and (min-width: 1024px)
+  .App
+    .sb-main-popup-wrapper
+      .pop-up-wrapper
+        padding: 15rem 19rem 5rem 19rem
+        height: calc(100% - 20rem)
+        width: calc(100% - 38rem)
+    #headerContainer
+      #ss_tag-Container
+        left: 20rem
+    #bodyContainer
+              
+      #headerToolBarContainer
+        height: 7.4rem
+        #toolBarWrapper
+          hight: 7.4rem
+          #form_name_group
+            width: calc(100% - 87.8rem)
+          #element_builder_group
+            width: 21rem
+          #preview_group
+            width: 31.1rem
+      #workPlace
+        width: calc(100% - 38rem)
+        position: relative
+        height: calc(100% - 9.4rem)
+        #wPtagGroup         
+          #formContainer
+            #wb_Container_holder
+              .wp_Element_Container
+                @include row-divide1(calc(100%  - 2rem), calc(50% - 2rem), calc(100% / 3 - 2rem), calc(100% / 4 - 2rem), calc(100% / 5 - 2rem),calc(100% / 6 - 2rem))
+
+      .ss_WP-Container
+        .element-container
+          .block-container
+            @include row-divide(100%, 50%, calc(100% / 3), calc(100% / 4), calc(100% / 5), calc(100% / 6) )
+      .sb_sideBarContainer
+        height: calc(100% - 7.4rem)
+        position: relative
+      #right
+        float: right
+        box-shadow: -0.2rem 0rem .5rem $color-gray-a
+
+
+@media screen and (max-width: 1024px)
+  .App
+    .sb-main-popup-wrapper
+      .pop-up-wrapper
+        padding: 22rem 19rem 5rem 19rem
+        height: calc(100% - 27rem)
+        width: calc(100% - 38rem)
+    #headerContainer
+      #ss_tag-Container
+        left: 20rem
+    #bodyContainer
+      #headerToolBarContainer
+        height: 14.4rem
+        #toolBarWrapper
+          hight: 14.4rem
+          #form_name_group
+            width: calc(100% - 35.4rem)
+            margin-right: 0rem
+          #element_builder_group
+            width: 21rem
+          #preview_group
+            width: 31.1rem
+      #workPlace
+        width: calc(100% - 38rem)
+        height: calc(100% - 16.4rem)
+        position: relative
+        #wPtagGroup         
+          #formContainer
+            #wb_Container_holder
+              .wp_Element_Container
+                @include row-divide1(calc(100%  - 2rem), calc(50% - 2rem), calc(100% / 3 - 2rem), calc(100% / 4 - 2rem), calc(100% / 5 - 2rem),calc(100% / 6 - 2rem))
+
+      .ss_WP-Container
+        .element-container
+          .block-container
+            @include row-divide(100%, 50%, calc(100% / 3), calc(100% / 4), calc(100% / 5), calc(100% / 6) )
+      .sb_sideBarContainer
+        height: calc(100% - 14.4rem)
+        position: relative
+      #right
+        float: right
+        box-shadow: -0.2rem 0rem .5rem $color-gray-a
+
+@media screen and (max-width: 950px)
+  .App
+    #bodyContainer      
+      .ss_WP-Container
+        .element-container
+          .block-container
+            @include row-divide(100%, 50%, calc(100% / 3),calc(100% / 3), calc(100% / 3), calc(100% / 3) )
+      #workPlace
+        #wPtagGroup         
+          #formContainer
+            #wb_Container_holder
+              .wp_Element_Container
+                @include row-divide1(calc(100%  - 2rem), calc(50% - 2rem), calc(100% / 3 - 2rem), calc(100% / 3 - 2rem), calc(100% / 3 - 2rem),calc(100% / 3 - 2rem))
+
+      
+@media screen and (max-width: 800px)
+  .App
+    .sb-main-popup-wrapper
+      .pop-up-wrapper
+        padding: 22rem 2rem 5rem 19rem
+        height: calc(100% - 27rem)
+        width: calc(100% - 21rem)
+    #bodyContainer
+      #workPlace
+        width: 58rem
+        position: absolute
+        left: 18rem
+        #wPtagGroup         
+          #formContainer
+            #wb_Container_holder
+              .wp_Element_Container
+                @include row-divide1(calc(100%  - 2rem), calc(50% - 2rem), calc(50% - 2rem), calc(50% - 2rem), calc(50% - 2rem),calc(50% - 2rem))
+      .ss_WP-Container
+        .element-container
+          .block-container
+            @include row-divide(100%, 50%, 50%, 50%, 50%, 50% )
+      .sb_sideBarContainer
+        height: calc((100% - 14.4rem) / 2)
+      #right
+        position: absolute
+        left: 0rem
+        bottom: 0rem
+        box-shadow: 0.2rem 0rem .5rem $color-gray-a
+
+
+
+@media screen and (max-width: 768px)
+  .App
+    
+    #headerContainer
+      .language-nav 
+        left: 68.9rem
+      .menue-nav
+        left: 73.5rem
+    #bodyContainer
+     
+      #headerToolBarContainer
+        #toolBarWrapper
+          #undo_redo_group
+            position: absolute
+            left: 8rem
+          #select_edit_group
+            position: absolute
+            left: 16rem
+          #properties_group
+            position: absolute
+            left: 25.7rem
+          #form_name_group
+            width: 41.4rem
+            position: absolute
+            left: 35.4rem
+          #element_builder_group
+            top: 7.2rem
+            width: 21rem
+            position: absolute
+            left: 0rem
+          #preview_group
+            top: 7.2rem
+            width: 31.1rem
+            position: absolute
+            left: 21.4rem
+      
+@media screen and (max-width: 650px)
+  .App
+    #bodyContainer    
+      #workPlace
+        #wPtagGroup         
+          #formContainer
+            #wb_Container_holder
+              .wp_Element_Container
+                @include row-divide1(calc(100%  - 2rem), calc(100% - 2rem), calc(100% - 2rem), calc(100% - 2rem), calc(100% - 2rem),calc(100% - 2rem))
+
+
+      .ss_WP-Container
+        .element-container
+          .block-container
+            @include row-divide(100%, 100%, 100%, 100%, 100%, 100% )
+
+
+     

@@ -1,0 +1,200 @@
+.App
+  #bodyContainer
+    #left
+      float: left
+    .ss_Left_sideBarContainer, .sa_Left_sideBarContainer
+      height: 100%
+      position: relative
+      background: $color-blue-b
+      &:hover
+        .ss_LSB-toggler, .sa_LSB-toggler
+          display: block
+
+      .ss_LSB-toggler, .sa_LSB-toggler
+        display: none
+        position: absolute
+        right: -1.2rem
+        top: 4rem       
+        border-left: none
+        width: 1.2rem
+        height: 4.5rem
+        border-radius: 0 2rem 2rem 0
+        padding: .5rem 0rem 
+        background: rgba($color-blue-b, .6)
+        &:after
+          content: "||"
+          font-size: 2.8rem
+          color: #fff
+          letter-spacing: -0.25rem
+        &:hover
+          background: $color-blue-b
+    
+      .sB-title
+        @include sideBarTitle($color-cream-a)
+        display: block
+        color: $color-gray-d
+        z-index: 1
+      .sb_wrapper
+        position: absolute
+        height: calc(100% - 8.5rem)
+        width: 100%
+        overflow: none
+        .btn-block
+          height: 100%
+          .block-title
+            @include sideBarTitle($color-cream-a)
+            display: block
+            margin: auto
+            color: $color-gray-d
+            max-width: 18.5rem
+            z-index: 1
+          .ss_sidebarButton, .sa_sidebarButton
+            @include sidebarButton
+            background: $color-cream-a
+            color: $color-gray-d
+            border-radius: 0.3rem
+            margin:  .5rem auto
+            width: 17.2rem
+            display: flex
+            z-index: 1
+            
+            .symbol-btn_4
+              font-size: 5rem
+              color: $color-blue-a
+              background: transparent
+              float: left
+              width: auto
+              height: 3rem
+              line-height: 100%
+              outline: none
+              margin: .2rem
+              border-radius: 0rem
+          .sidebar-sub-btn
+            flex-grow: 2
+            position: relative
+            max-height: 48rem 
+            @include animation (fade-in,"", .5s,ease , both )
+            max-width: 18.5rem
+            margin: .8rem
+            font-size: 1.4rem
+            overflow: none
+            overflow-y: auto
+         
+            // Filter
+            .category-wrapper
+              position: relative
+              max-height: calc(100% - .5rem)
+
+              .category, .sub-category
+                padding: .5rem
+                @include flexbox
+                min-width: 10rem
+                height: auto
+                width: auto
+                position: relative
+                align-items: center
+                margin-bottom: .5rem
+                border-radius: .3rem
+                background: $color-cream-a
+                color: $color-black
+                &:last-child
+                  margin-bottom: 0
+                .checkbox
+                  height: 2rem
+                  width: 1.5rem
+                  margin: 0 .5rem 0 0
+                  vertical-align: middle
+                .title
+                  vertical-align: middle
+                  
+                  line-height: 100%
+                .filter-item
+                  @include flexbox
+                  padding: .5rem .5rem .5rem 2rem
+                  width: 10rem
+                  height: 2rem
+              .category
+                background: $color-blue-c
+              .sub-category
+                padding-left: 1.5rem
+                background: $color-orange-a
+
+
+
+      .save_Filter_Btn
+        @include button($color-blue-a)
+        position: absolute
+        bottom: 0rem
+        width: 100%
+        padding: 10px
+        font-weight: bold
+        border-radius: 0
+        &:hover
+          @include active($color-orange, "")
+
+
+@media screen and (min-width: 650px)
+  .ss-layout-0, .sa-layout-0
+    #bodyContainer
+      .ss_Left_sideBarContainer, .sa_Left_sideBarContainer
+        @include sideBarContainer(19.8rem, $color-white)
+        background: $color-blue-b
+
+        .sB-title
+          margin: auto
+          max-width: 18.5rem
+          margin-bottom: 1rem
+
+  .ss-layout-1, .sa-layout-1
+    #bodyContainer
+      .ss_Left_sideBarContainer, .sa_Left_sideBarContainer
+        width: 5rem  
+        .sB-title
+          position: absolute
+          display: block
+          margin: 0 
+          top: 4.5rem
+          padding: 0 2rem 
+          height: 4rem
+          width: 22rem
+          transform-origin: 4.5rem 0
+          transform: rotate(90deg)
+        
+        .sb_wrapper, .save_Filter_Btn, .sidebar-translator-btn
+          display: none
+
+
+@media screen and (max-width: 649px)
+  .ss-layout-0, .sa-layout-0
+    #bodyContainer
+      .ss_Left_sideBarContainer, .sa_Left_sideBarContainer
+        width: 5rem  
+        .sB-title
+          position: absolute
+          display: block
+          margin: 0 
+          top: 4.5rem
+          padding: 0 2rem 
+          height: 4rem
+          width: 22rem
+          transform-origin: 4.5rem 0
+          transform: rotate(90deg)
+        
+        .sb_wrapper, .save_Filter_Btn, .sidebar-translator-btn
+          display: none
+  .ss-layout-1, .sa-layout-1
+    #bodyContainer
+      .ss_Left_sideBarContainer, .sa_Left_sideBarContainer
+        @include sideBarContainer(19.8rem, $color-white)
+        background: $color-blue-b
+
+        .sB-title
+          margin: auto
+          max-width: 18.5rem
+          margin-bottom: 1rem
+
+        
+       
+
+
+

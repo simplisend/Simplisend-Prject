@@ -1,0 +1,127 @@
+
+.App
+  #bodyContainer
+    #headerToolBarContainer
+      position: relative
+      margin:  0 
+      padding: 0
+      top: 0rem
+      width: 100%
+      background: $color-cream
+      box-shadow: .2rem 0.1rem .5rem $color-gray-a
+      @include clearFix
+      #toolBarWrapper
+        width: 100%
+        position: absolute
+        top: .1rem
+        .btn_group
+          margin: 0.4rem 0rem .4rem 0rem
+          height: 6.4rem
+          position: relative
+          background: $color-cream
+          box-shadow: .2rem 0rem .5rem $color-gray-a
+          user-select: none
+          float: left
+          border-radius: .5rem
+
+          &:not(:last-child)
+            margin-right: 0.4rem
+          .active
+            @include active($color-orange, 1)
+        #new_open_save_group,
+        #undo_redo_group,
+        #select_edit_group, #properties_group,
+        #form_name_group,
+        #element_builder_group,
+        #preview_group
+          .tool_group_title
+            font-family: $font-Arial
+            font-size: 1.2rem
+            font-weight: bold
+            color: $color-gray-c
+            position: absolute
+            cursor: default
+          .groupTitel
+            top: .2rem
+            left: 0rem
+            width: 100%
+            text-align: center
+
+.symbol-btn
+  fill: $color-gray-c
+  @include symbol-btn(1.5rem)
+  border: none
+  width: 1.8rem
+  height: 1.8rem
+  background: transparent
+  &:hover
+    color: $color-black
+    fill: $color-black
+
+
+.symbol-btn_2
+  @include symbol-btn(2rem)
+  top: 1.6rem
+  width: 4rem
+  height: 3.2rem
+
+.symbol-btn_3
+  @include symbol-btn(3rem)
+  position: relative
+  width: 7rem
+  height: 5.5rem
+  margin-right: 0rem
+  margin-left:  1rem
+  line-height: 80%
+  
+.symbol-btn-Borderd
+  @include symbol-btn(1rem)
+  width: 1.8rem
+  height: 1.8rem
+
+.icon_1
+  top: 2.5rem
+  fill: $color-gray-b
+  position: absolute
+  cursor: default
+  width: 2.4rem
+  height: 2.4rem
+  padding: 0rem
+  margin: 0rem
+  outline: none
+
+.btn-Preview
+  font-family: $font-Arial
+  font-size: 1.2rem
+  font-weight: bold
+  color: $color-gray-c
+  border: .1rem
+  border-color: $color-gray
+  background-color: $color-cream
+  border-style: solid
+  width: 6rem
+  height: 2rem
+  position: absolute
+  cursor: default
+  outline: none
+  text-align: center
+ 
+
+.active_btn
+  @include active($color-orange, 1)
+
+
+.titleText
+ display: block
+ font-family: $font-Arial
+ font-size: 1rem
+ font-weight: bold
+ top: 0rem
+ text-align: center
+ position: relative
+ line-height: 100%
+
+
+.titleSymbol
+  top: .2rem
+  position: relative

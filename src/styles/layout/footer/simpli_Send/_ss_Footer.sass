@@ -1,0 +1,25 @@
+#ss-footer
+
+  @include footer($color-white)
+  @include justify-content-center
+  box-shadow: 0rem -0.1rem 1rem $color-gray-a
+  user-select: none
+
+  #ss-footer-links-wrapper
+    width:  50rem
+    @include flexbox
+    .ss-footer-link-item
+      display:  flex
+      align-items: center
+      @include justify-content-center
+      padding: 0 
+      color: $color-gray-c
+      font-size: 1.4rem
+      width: 100%
+      cursor: pointer
+      border-right:  solid .2rem $color-gray-a
+      &:first-child
+        border-left: solid .2rem $color-gray-a
+      &:hover
+        background: $color-blue-a
+        color: $color-white

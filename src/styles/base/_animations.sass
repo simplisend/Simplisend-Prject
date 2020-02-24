@@ -1,0 +1,74 @@
+
+@mixin animation ($animation, $delay, $duration, $cubic, $fill) 
+    -webkit-animation-delay: $delay
+    -webkit-animation: $animation $duration $cubic $fill
+
+    -moz-animation-delay: $delay
+    -moz-animation: $animation $duration $cubic $fill
+
+    -o-animation-delay: $delay
+    -o-animation: $animation $duration $cubic $fill
+
+    animation-delay: $delay
+    animation: $animation $duration $cubic $fill
+
+@mixin keyframes($name) 
+    @-webkit-keyframes #{$name} 
+      @content
+  
+    @-moz-keyframes #{$name} 
+      @content
+
+    @-o-keyframes #{$name} 
+      @content
+  
+    @keyframes #{$name} 
+      @content
+  
+
+@include keyframes(scale-up) 
+    0%
+      transform: scale(1)
+    
+    100%
+      transform: scale(1.05)
+  
+
+@include keyframes(scale-up-center) 
+    0%
+      transform: scale(.2)
+      opacity: 0
+    
+    100%
+      transform: scale(1)
+      opacity: 1
+  
+
+@include keyframes (scale-in-ver-bottom)
+    0%
+      transform: scaleY(0)
+      transform-origin: 0 100%
+      opacity: 1
+    100%
+        transform: scaleY(1)
+        transform-origin: 0 100%
+        opacity: 1
+
+
+@include keyframes (sweep-in-left)
+    0%
+      right: -100%
+
+    100%
+      right: 0rem
+
+@include keyframes (fade-in)
+    0%
+      opacity: 0
+    
+    100%
+      opacity: 1
+
+
+
+

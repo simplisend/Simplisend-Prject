@@ -1,0 +1,21 @@
+.App
+  #bodyContainer
+    #left
+    .sa_Left_sideBarContainer
+      .sB-title
+      .sidebar-translator-btn
+        @include button($color-blue-a)
+        width: calc(100% - 1.3rem)
+        display: block
+        margin: auto 
+        margin-bottom: .6rem
+        padding: 10px
+        font-weight: bold
+        border-radius: 0
+      .sidebar-translator-btn.active
+        @include active($color-orange, "")
+      .sb_wrapper
+        .block-title
+        .sa_sidebarButton
+          .symbol-btn_4
+        

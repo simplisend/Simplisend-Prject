@@ -1,0 +1,63 @@
+.App
+  #bodyContainer       
+    .ss_WP-Container
+      .right-sidebar-elements-container
+        .eule
+          position: absolute
+          display: flexbox
+          right: 1rem
+          bottom: 0
+          width: 7rem
+          height: 7rem
+          margin: 0
+          padding: 0
+       
+        .discription
+          position: absolute
+          height: fit-content
+          width: fit-content
+          font-family: $font-Arial
+          font-size: 1.4rem
+          right: .5rem
+          bottom: 9rem
+          max-height: calc(80% - 12rem)
+          max-width: calc(50% - 2rem)
+          min-width: 10rem
+          border: solid .2rem $color-blue-a
+          border-radius: 1.5rem
+          background: $color-cream-a
+          padding: 1rem
+          user-select: none
+          @include animation (fade-in,"", .5s, ease, forwards )
+          &:after
+            position: absolute
+            bottom: -0.5rem
+            right: 3rem
+            transform: rotate(45deg) translateY(0px) translatex(10px)
+            content: ""
+            background: $color-cream-a
+            width: 2rem
+            height: 2rem
+            left: auto
+            border: solid .2rem $color-blue-a
+            border-left: none
+            border-top: none 
+          .general-info
+            position: relative
+            max-height: 46rem
+            overflow-y: auto
+           
+            
+              
+
+
+        .content-wrapper_1
+          .column_1, .column_2
+            .column_2
+              .row_end
+        .content-wrapper_2
+          .input-wrapper
+      
+         
+
+  

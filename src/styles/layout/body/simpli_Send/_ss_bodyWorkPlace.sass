@@ -1,0 +1,164 @@
+.App
+  #bodyContainer
+    .ss_WP-Container
+      .workplace-body
+      .workplace-logo
+        order: 1
+        position: relative
+        width: 100%
+        min-height: 40%
+        flex-grow: 1
+        align-items: flex-end
+        @include flexbox
+        padding-bottom: 1rem
+        @include logo-Link(5.6rem)
+        #logo_div
+          order: 1
+          width: 100%
+          text-align: center
+          bottom: 6.8rem 
+          .simpli-logo
+            svg
+              width: 5.4rem
+              height: 5.4rem
+              top: .8rem
+            .logo-domain
+              display: block
+              position: absolute
+              left: 63% 
+              bottom: -.8rem
+              width: fit-content
+              font-size: 2rem
+              font-family: $font-Arial
+              text-transform: capitalize
+              font-weight: 200           
+        .workplace-search
+          order: 2
+          width: 100%
+          @include justify-content-center
+          .search-wrapper
+            margin: 1rem 0
+            @include flexbox
+            @include justify-content-center
+            width: 100%
+            .search-input
+              border: solid 2px $color-blue-a
+              height: 2.8rem
+              border-radius: 6px
+              width: 50%
+              margin: 0 1rem
+              padding: 5px
+              outline: none
+            .search-button
+              @include button($color-blue-a)
+              font-weight: bold
+    .workplace-apps
+      order: 2
+      max-height: calc(80% - 3rem)
+      min-height: calc(60% - 3rem)
+      width: calc(100% - 8rem)
+      text-align: center
+      padding: 1rem 4rem
+      overflow-y: auto
+      bottom: 0
+      .app-holder
+        height: fit-content
+        display: inline-block
+        margin: 1rem
+
+        .tag-app-container
+          width: 16rem
+          height: 16rem
+          display: inline-flex
+          justify-content: center
+          background: $color-white
+          border-radius: .6rem
+          box-shadow: .2rem .2rem .3rem $color-gray
+          position: relative
+          cursor: pointer
+          &:hover
+            .tag-app-body, .tag-app-info  
+              display: inline-flex
+          .ss-tag-image
+            position: relative
+            display: flex
+            flex-direction: column
+            justify-content: center
+            margin: auto
+            max-height: calc(100% - 2rem)
+            max-width: calc(100% - 2rem)
+          .tag-app-info, .tag-app-body  
+            top: 0
+            display: none
+            position: absolute
+            margin: auto
+            width: calc(100% - .4rem)
+            height: calc(20% - .4rem)
+            background: $color-cream-a
+            padding: .2rem
+            &:last-child
+              top: 80%
+          .tag-app-body 
+            justify-content: center
+            top: 20%
+            height: calc(60% - .6rem)
+            border-top: .1rem solid $color-gray-a
+            border-bottom: .1rem solid $color-gray-a
+        .tag-app-title
+          display: block
+          position: relative
+          width: calc(100% - 1.2rem)
+          height: fit-content
+          padding: .6rem
+          font-size: 1.6rem
+          font-weight: 700
+          
+      .form-app-container
+        width: calc(80% - 2rem)
+        height: 15rem
+        display: inline-block
+        background: $color-white
+        margin: 1rem
+        border-radius: .6rem
+        box-shadow: .2rem .2rem .5rem $color-blue-a
+        position: relative
+        &:hover
+          cursor: pointer
+          .app-body
+            display: block
+        .app-title
+          position: absolute
+          width: calc(100% - .4rem)
+          height: 3.1rem
+          border-bottom: .1rem solid $color-blue-a
+          border-radius: .6rem .6rem 0 0
+          padding: .2rem
+          &:after
+            content: ""
+            height: 2rem
+            width: 2rem
+            background: $color-blue-a
+            position: absolute
+            right: 0
+            top: 0
+            border-radius: 0 0 0 .5rem
+            clip-path: polygon(0 0, 0 0, 100% 100%, 0 100%)
+        .app-body
+          position: absolute
+          width: 100%
+          top: 3.5rem
+          background: $color-blue-a
+          height: 8.5rem
+          display: none
+          .app-logo , .app-info
+            display: inline-block
+            padding: .5rem
+            width: calc(40% - 1rem)
+            height: 7.5rem
+          .app-info
+            width: calc(60% - 1rem)
+
+
+
+
+  

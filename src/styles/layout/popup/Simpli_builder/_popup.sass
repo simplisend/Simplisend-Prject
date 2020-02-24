@@ -1,0 +1,32 @@
+.sb-main-popup-wrapper, .sb-starter-popup-wrapper
+  @include pup_up
+  .pop-up-wrapper
+    .pop-up
+      .popup-body
+        .tree_container
+          @include flexbox
+          @include justify-content-space-around
+          min-height: 20rem
+          .sa-body-col, .sa-body-col-2
+            padding: 0 .5rem
+            user-select: none
+            background: $color-cream-a
+            .sa-cats, .sa-forms
+              height: 100%
+              @include sa_Cat_and_form_tree()
+          .sa-body-col-2
+            width: 69%
+          .sa-body-col,
+            width: 30%
+            min-width: 17rem
+.sb-starter-popup-wrapper
+  .pop-up-wrapper
+    padding: 15rem 10rem 5rem 10rem
+    height: calc(100% - 20rem)
+    width: calc(100% - 20rem)
+         
+          
+          
+        
+        
+        
