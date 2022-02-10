@@ -6,7 +6,7 @@
     "array-to-tree": "^3.3.0",
     "axios": "^0.18.1",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "re-resizable": "^6.0.0",
     "react": "^16.6.3",
     "react-autosize-textarea": "^7.0.0",
